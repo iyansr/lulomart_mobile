@@ -39,10 +39,8 @@ class LoginPageForm extends StatelessWidget {
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: Icon(
-                    Icons.person,
-                  ),
+        radius: 35.0,
+        child: Image.asset('assets/images/loginicon.jpeg')
       ),
     );
 
@@ -92,6 +90,7 @@ class LoginPageForm extends StatelessWidget {
               shrinkWrap: true,
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               children: <Widget>[
+                SizedBox(height: 15.0),
                 logo,
                 SizedBox(height: 30.0),
                 email,
