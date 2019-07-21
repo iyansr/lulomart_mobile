@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lulomart_mobile/storepage.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/widget/right_drawer.dart';
+import 'package:lulomart_mobile/widget/right_drawer_storepage.dart';
 import 'package:lulomart_mobile/widget/textfieldicon.dart';
 
 class LoginPage extends StatelessWidget {
@@ -38,10 +39,9 @@ class LoginPageForm extends StatelessWidget {
     final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 35.0,
-        child: Image.asset('assets/images/loginicon.jpeg')
-      ),
+          backgroundColor: Colors.transparent,
+          radius: 35.0,
+          child: Image.asset('assets/images/loginicon.jpeg')),
     );
 
     final email = TextFormField(

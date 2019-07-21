@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/widget/detail.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/widget/right_drawer.dart';
+import 'package:lulomart_mobile/widget/right_drawer_storepage.dart';
 
 class StoreItemPage extends StatefulWidget {
   @override

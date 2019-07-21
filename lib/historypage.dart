@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/widget/right_drawer_storepage.dart';
-import 'package:lulomart_mobile/widget/storeitempage.dart';
-import 'package:lulomart_mobile/widget/textfieldicon.dart';
+import 'package:lulomart_mobile/storepage.dart';
 
-class StorePage extends StatefulWidget {
+class HistoryPage extends StatefulWidget {
   @override
-  StorePageLayout createState() => StorePageLayout();
+  HistoryPageLayout createState() => HistoryPageLayout();
 }
 
-class StorePageLayout extends State<StorePage> {
+class HistoryPageLayout extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -26,7 +24,7 @@ class StorePageLayout extends State<StorePage> {
             children: <Widget>[
               LeftDrawer(),
               Expanded(
-                flex: 12,
+                flex: 18,
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[
@@ -34,18 +32,18 @@ class StorePageLayout extends State<StorePage> {
                       Padding(
                         padding: const EdgeInsets.all(1.0),
                         child: Container(
-                          child: TextFieldIcon(),
+                          child: null
                         ),
                       ),
                       Container(
                         height: 300.0,
-                        child: StoreItemPage(),
+                        child: null
                       ),
                     ],
                   ),
                 ),
               ),
-              RightDrawerStorePage(),
+              //RightDrawer(),
             ],
           ),
         ),
