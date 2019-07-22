@@ -4,13 +4,14 @@ import 'package:lulomart_mobile/historypage.dart';
 import 'package:lulomart_mobile/storepage.dart';
 import 'package:lulomart_mobile/loginpage.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
+import 'widget/right_drawer_profilepage.dart';
 
-class About extends StatefulWidget {
+class ProfilePage extends StatefulWidget {
   @override
-  AboutLayout createState() => AboutLayout();
+  ProfilePageLayout createState() => ProfilePageLayout();
 }
 
-class AboutLayout extends State<About> {
+class ProfilePageLayout extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -26,7 +27,7 @@ class AboutLayout extends State<About> {
             children: <Widget>[
               LeftDrawer(),
               Expanded(
-                flex: 12,
+                flex: 5,
                 child: Container(
                   child: Column(
                     children: <Widget>[
@@ -35,7 +36,7 @@ class AboutLayout extends State<About> {
                   ),
                 ),
               ),
-              // RightDrawerStorePage(),
+              RightDrawerProfilePage(),
             ],
           ),
         ),
