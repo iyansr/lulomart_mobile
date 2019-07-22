@@ -27,58 +27,57 @@ class HistoryListLayout extends State<HistoryList> {
     return Card(
       elevation: 4.0,
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-      child: Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: makeListTile,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: tableFormat,
+        ),
       ),
     );
   }
 
-  final makeListTile = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
-    leading: Container(
-      padding: EdgeInsets.all(6.0),
-      decoration: BoxDecoration(
-          border: Border(right: BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(
-        Icons.local_offer,
-        color: Colors.black,
-        size: 20,
-      ),
-    ),
-    title: Text(
-      "trx20181222110439524052",
-      style: TextStyle(
-          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Text(
-          "Hartono Jumanji",
-          style: TextStyle(color: Colors.black, fontSize: 10),
-        ),
-        
-        Divider(
-          color: Colors.black,
-        ),
-      ],
-    ),
-    trailing: Column(
-      children: <Widget>[
-        Text("Rp.80.000", style: TextStyle(color: Colors.black, fontSize: 10)),
-        RaisedButton(
-          child: const Text(
-            'Details',
-            style: TextStyle(color: Colors.white),
+  final tableFormat = Table(
+    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+    children: <TableRow>[
+      TableRow(children: <Widget>[
+        Container(
+          width: 500,
+          child: Column(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text('trx20181222110936147917', style: TextStyle(fontWeight: FontWeight.bold),),
+                  SizedBox(height: 5,),
+                  Text('Hartono Jumanji'),
+                  Text('2018-12-22 11:04:39'),
+                ],
+              )
+            ],
           ),
-          color: Colors.red,
-          elevation: 4.0,
-          onPressed: () {},
         ),
-      ],
-    ),
+        Container(
+          child: Column(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text('Rp.80.000'),
+                  RaisedButton(
+                    child: const Text(
+                      'Details',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.red,
+                    elevation: 4.0,
+                    onPressed: () {},
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
+      ])
+    ],
   );
 
   @override
