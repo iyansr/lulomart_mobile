@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_mobile/profilepage.dart';
 
-class RightDrawerProfilePage extends StatelessWidget {
-  
+class RightDrawerProfilePage extends StatefulWidget {
+  @override
+  _RightDrawerProfilePageState createState() => _RightDrawerProfilePageState();
+}
+
+class _RightDrawerProfilePageState extends State<RightDrawerProfilePage> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
@@ -13,5 +17,4 @@ class RightDrawerProfilePage extends StatelessWidget {
       ),
     );
   }
-
 }

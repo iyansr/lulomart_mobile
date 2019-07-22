@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_mobile/storepage.dart';
 
-class LeftDrawer extends StatelessWidget {
+class LeftDrawer extends StatefulWidget {
+  @override
+  _LeftDrawerState createState() => _LeftDrawerState();
+}
+
+class _LeftDrawerState extends State<LeftDrawer> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
         flex: 2,
         child: Container(
           decoration: new BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Color(0xfff84c35), Color(0xfff96f5d)], stops: [0, 1])),
+              gradient: LinearGradient(
+                  colors: [Color(0xfff84c35), Color(0xfff96f5d)],
+                  stops: [0, 1])),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
