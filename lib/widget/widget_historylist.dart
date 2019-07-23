@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HistoryList extends StatefulWidget {
-  @override
-  HistoryListLayout createState() => HistoryListLayout();
-}
+// class HistoryList extends StatefulWidget {
+//   @override
+//   HistoryListLayout createState() => HistoryListLayout();
+// }
 
-class HistoryListLayout extends State<HistoryList> {
-  bool isBorderEnabled = false;
-  var actionIcon = Icons.border_all;
+class HistoryList extends StatelessWidget {
+  final bool isBorderEnabled = false;
+  final actionIcon = Icons.border_all;
 
   Widget makeList() {
     return Container(
@@ -46,8 +46,13 @@ class HistoryListLayout extends State<HistoryList> {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Text('trx20181222110936147917', style: TextStyle(fontWeight: FontWeight.bold),),
-                  SizedBox(height: 5,),
+                  Text(
+                    'trx20181222110936147917',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Text('Hartono Jumanji'),
                   Text('2018-12-22 11:04:39'),
                 ],
@@ -81,8 +86,6 @@ class HistoryListLayout extends State<HistoryList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: makeList(),
-    );
+    return makeList();
   }
 }
