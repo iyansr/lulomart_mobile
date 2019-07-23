@@ -23,7 +23,7 @@ class HistoryPageLayout extends State<HistoryPage> {
         body: Center(
           child: Row(
             children: <Widget>[
-              LeftDrawer(),
+              // LeftDrawer(),
               Expanded(
                 flex: 10,
                 child: HistoryList(),

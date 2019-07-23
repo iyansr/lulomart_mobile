@@ -22,14 +22,12 @@ class ProfilePageLayout extends State<ProfilePage> {
         body: Center(
           child: Row(
             children: <Widget>[
-              LeftDrawer(),
+              // LeftDrawer(),
               Expanded(
                 flex: 5,
                 child: Container(
                   child: Column(
-                    children: <Widget>[
-                      
-                    ],
+                    children: <Widget>[],
                   ),
                 ),
               ),

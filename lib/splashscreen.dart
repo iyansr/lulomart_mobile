@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lulomart_mobile/storepage.dart';
+import 'package:lulomart_mobile/main_page.dart';
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
