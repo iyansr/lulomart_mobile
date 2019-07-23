@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lulomart_mobile/widget/detail.dart';
+import 'package:lulomart_mobile/widget/widget_detail.dart';
 
 class StoreItemPage extends StatefulWidget {
   @override
@@ -65,7 +65,7 @@ class _StoreItemPageState extends State<StoreItemPage> {
                       });
                     },
                     child: new Image.asset(
-                      "img/$gambar",
+                      "assets/images/$gambar",
                       fit: BoxFit.cover,
                     ),
                   ),

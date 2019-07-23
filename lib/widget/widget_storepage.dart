@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:lulomart_mobile/widget/widget_detail.dart';
 
 class RightDrawerStorePage extends StatefulWidget {
   @override
