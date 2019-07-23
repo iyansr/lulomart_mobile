@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lulomart_mobile/historypage.dart';
-import 'package:lulomart_mobile/storepage.dart';
-import 'package:lulomart_mobile/loginpage.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
 import 'widget/right_drawer_profilepage.dart';
 

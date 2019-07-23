@@ -32,7 +32,9 @@ class _LeftDrawerState extends State<LeftDrawer> {
                 ),
                 SizedBox(height: 15.0),
                 RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => StorePage()));
+                  },
                   child: Icon(
                     Icons.shopping_cart,
                   ),
@@ -54,7 +56,9 @@ class _LeftDrawerState extends State<LeftDrawer> {
                 ),
                 SizedBox(height: 5.0),
                 RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => StorePage()));
+                  },
                   child: Icon(
                     Icons.bookmark,
                   ),

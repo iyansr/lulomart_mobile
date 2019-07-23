@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/widget/historylist.dart';
 import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/storepage.dart';
 import 'package:lulomart_mobile/widget/right_drawer_historypage.dart';
 
 class HistoryPage extends StatefulWidget {
