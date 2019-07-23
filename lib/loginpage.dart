@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lulomart_mobile/storepage.dart';
-import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/widget/right_drawer_storepage.dart';
-import 'package:lulomart_mobile/widget/textfieldicon.dart';
 
 class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -18,15 +14,13 @@ class LoginPage extends StatelessWidget {
       ),
       home: Scaffold(
         body: Container(
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Color(0xff), width: 1),
-                gradient: LinearGradient(
-                  colors: [Color(0xffFF4444), Color(0xff)],
-                  stops: [0, 1],
-                )),
-            child: LoginPageForm(),
-          ),
+          decoration: BoxDecoration(
+              border: Border.all(color: Color(0xff), width: 1),
+              gradient: LinearGradient(
+                colors: [Color(0xffFF4444), Color(0xff)],
+                stops: [0, 1],
+              )),
+          child: LoginPageForm(),
         ),
       ),
     );
@@ -46,7 +40,6 @@ class LoginPageForm extends StatelessWidget {
 
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
-      autofocus: false,
       initialValue: '',
       decoration: InputDecoration(
         hintText: 'Email',
@@ -56,7 +49,6 @@ class LoginPageForm extends StatelessWidget {
     );
 
     final password = TextFormField(
-      autofocus: false,
       initialValue: '',
       obscureText: true,
       decoration: InputDecoration(
