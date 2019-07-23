@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lulomart_mobile/view/view_store.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
 import 'package:lulomart_mobile/widget/widget_historypage.dart';
-import 'package:lulomart_mobile/widget/widget_storepage.dart';
+import 'package:lulomart_mobile/widget/widget_right_drawer_storepage.dart';
 
-class StorePage extends StatefulWidget {
+class MainStorePage extends StatefulWidget {
   @override
-  StorePageLayout createState() => StorePageLayout();
+  MainStorePageLayout createState() => MainStorePageLayout();
 }
 
-class StorePageLayout extends State<StorePage> {
+class MainStorePageLayout extends State<MainStorePage> {
   @override
   void initState() {
     super.initState();
@@ -116,7 +117,7 @@ class StorePageLayout extends State<StorePage> {
                 child: mainPage,
               ),
               Expanded(
-                flex: 8,
+                flex: 6,
                 child: rightDrawer,
               ),
             ],

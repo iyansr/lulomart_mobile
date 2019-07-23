@@ -15,27 +15,23 @@ class StorePageLayout extends State<StorePage> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    
-   return Expanded(
-      flex: 12,
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: Container(
-                child: TextFieldIcon(),
-              ),
+
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 10.0),
+          Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Container(
+              child: TextFieldIcon(),
             ),
-            Container(
-              height: 300.0,
-              child: StoreItemPage(),
-            ),
-          ],
-        ),
+          ),
+          Container(
+            height: 300.0,
+            child: StoreItemPage(),
+          ),
+        ],
       ),
     );
-    
   }
 }
