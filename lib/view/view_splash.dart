@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lulomart_mobile/storepage.dart';
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
@@ -33,6 +32,6 @@ class SplashScreenState extends State<SplashScreen> {
 
   onDoneLoading() async {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => StorePage()));
+        MaterialPageRoute(builder: (BuildContext context) => SplashScreen()));
   }
 }

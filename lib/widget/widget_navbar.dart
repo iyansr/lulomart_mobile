@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lulomart_mobile/storepage.dart';
+import 'package:lulomart_mobile/view/view_store.dart';
 
-class LeftDrawer extends StatefulWidget {
+class Navbar extends StatefulWidget {
   @override
-  _LeftDrawerState createState() => _LeftDrawerState();
+  _NavbarState createState() => _NavbarState();
 }
 
-class _LeftDrawerState extends State<LeftDrawer> {
+class _NavbarState extends State<Navbar> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
