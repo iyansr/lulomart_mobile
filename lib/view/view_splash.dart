@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:lulomart_mobile/main_page.dart';
+
 class SplashScreen extends StatefulWidget {
   @override
   SplashScreenState createState() => SplashScreenState();
@@ -32,6 +34,6 @@ class SplashScreenState extends State<SplashScreen> {
 
   onDoneLoading() async {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => SplashScreen()));
+        MaterialPageRoute(builder: (BuildContext context) => MainPage()));
   }
 }

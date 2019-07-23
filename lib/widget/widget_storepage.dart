@@ -11,16 +11,13 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       color: Colors.black87,
       child: Column(
         children: <Widget>[
-          SizedBox(
-            height: 9,
-          ),
           Container(
-            color: Colors.black12,
-            height: 200,
+            color: Colors.black38,
+            height: 190,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
+              child: ListView(
                 children: <Widget>[
                   Table(
                     children: [
@@ -66,10 +63,22 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  Table(
-                    children: [
+                      TableRow(
+                        children: [
+                          Text(
+                            'Sayur',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            '1',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            'Rp 5.000',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                       TableRow(
                         children: [
                           Text(
@@ -95,6 +104,10 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                     ),
                   ),
                   Text(
+                    'Quantity : 10',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
                     'Total : Rp 10.000',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -102,75 +115,33 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
               ),
             ),
           ),
-          Column(
-            children: <Widget>[
-              RaisedButton(
-                child: const Text('Cancel'),
-                color: Colors.red[300],
-                elevation: 4.0,
-                onPressed: () {},
-              ),
-              RaisedButton(
-                child: const Text('Hold'),
-                color: Colors.yellow[300],
-                elevation: 4.0,
-                onPressed: () {},
-              ),
-              RaisedButton(
-                child: const Text('Payment'),
-                color: Colors.green[300],
-                elevation: 4.0,
-                onPressed: () {},
-              ),
-            ],
+          Divider(color: Colors.white),
+          Container(
+            child: Column(
+              children: <Widget>[
+                RaisedButton(
+                  child: const Text('Cancel'),
+                  color: Colors.red[300],
+                  elevation: 4.0,
+                  onPressed: () {},
+                ),
+                RaisedButton(
+                  child: const Text('Hold'),
+                  color: Colors.yellow[300],
+                  elevation: 4.0,
+                  onPressed: () {},
+                ),
+                RaisedButton(
+                  child: const Text('Payment'),
+                  color: Colors.green[300],
+                  elevation: 4.0,
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 }
-
-// Column(
-//               children: <Widget>[
-//                 Row(
-//                   children: <Widget>[
-//                     Column(
-//                       children: <Widget>[
-//                         Text(
-//                           "Product",
-//                           style: TextStyle(color: Colors.white),
-//                         ),
-
-//                       ],
-//                     ),
-//                     Column(
-//                       children: <Widget>[
-//                         Text(
-//                           "Qty",
-//                           style: TextStyle(color: Colors.white),
-//                         ),
-//                       ],
-//                     ),
-//                     Column(
-//                       children: <Widget>[
-//                         Text(
-//                           "Per-Item",
-//                           style: TextStyle(color: Colors.white),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//                 SingleChildScrollView(
-//                   child: Column(
-//                     children: <Widget>[
-//                       Container(
-//                         width: 100,
-//                         height: 150.0,
-//                         child: Detail(),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),

@@ -5,4 +5,4 @@ import 'package:lulomart_mobile/view/view_splash.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
 import 'package:lulomart_mobile/widget/widget_navbar.dart';
 
-void main() => runApp(MainStorePage());
+void main() => runApp(MainPage());

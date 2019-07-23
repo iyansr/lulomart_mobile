@@ -16,9 +16,6 @@ class HistoryPageLayout extends State<HistoryPage> {
       DeviceOrientation.landscapeRight,
     ]);
 
-    return Expanded(
-      flex: 10,
-      child: HistoryList(),
-    );
+   return HistoryList();
   }
 }
