@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:lulomart_mobile/widget/left_drawer.dart';
-import 'package:lulomart_mobile/historypage.dart';
 
-class RightDrawerHistoryPage extends StatelessWidget {
+class RightDrawerHistoryPage extends StatefulWidget {
+  @override
+  _RightDrawerHistoryPageState createState() => _RightDrawerHistoryPageState();
+}
+
+class _RightDrawerHistoryPageState extends State<RightDrawerHistoryPage> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(

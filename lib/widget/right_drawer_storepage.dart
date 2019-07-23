@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lulomart_mobile/widget/detail.dart';
-import 'package:lulomart_mobile/widget/list_penjualan.dart';
 
-class RightDrawerStorePage extends StatelessWidget {
+class RightDrawerStorePage extends StatefulWidget {
+  @override
+  _RightDrawerStorePageState createState() => _RightDrawerStorePageState();
+}
+
+class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
