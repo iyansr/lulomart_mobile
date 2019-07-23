@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lulomart_mobile/storepage.dart';
-import 'package:lulomart_mobile/widget/historylist.dart';
-import 'package:lulomart_mobile/widget/right_drawer_historypage.dart';
-import 'package:lulomart_mobile/widget/right_drawer_storepage.dart';
+import 'package:lulomart_mobile/widget/widget_historylist.dart';
+import 'package:lulomart_mobile/widget/widget_historypage.dart';
+import 'package:lulomart_mobile/widget/widget_storepage.dart';
 
 class StorePage extends StatefulWidget {
   @override
@@ -19,7 +18,7 @@ class StorePageLayout extends State<StorePage> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    mainPage = MainStorePage();
+    mainPage = StorePage();
     rightDrawer = RightDrawerStorePage();
   }
 
@@ -67,7 +66,7 @@ class StorePageLayout extends State<StorePage> {
                           RawMaterialButton(
                             onPressed: () {
                               setState(() {
-                                mainPage = MainStorePage();
+                                mainPage = StorePage();
                                 rightDrawer = RightDrawerStorePage();
                               });
                             },
