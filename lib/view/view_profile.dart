@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lulomart_mobile/widget/widget_navbar.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -22,7 +21,6 @@ class ProfilePageLayout extends State<ProfilePage> {
         body: Center(
           child: Row(
             children: <Widget>[
-              Navbar(),
               Expanded(
                 flex: 5,
                 child: Container(

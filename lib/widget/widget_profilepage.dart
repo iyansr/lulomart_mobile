@@ -9,7 +9,7 @@ class _RightDrawerProfilePageState extends State<RightDrawerProfilePage> {
   Widget build(BuildContext context) {
     return Container(
       child: Expanded(
-        flex: 10,
+        flex: 9,
         child: SingleChildScrollView(
           child: Container(
             decoration: BoxDecoration(color: Colors.black87),

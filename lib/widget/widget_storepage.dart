@@ -12,7 +12,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: 10,
+            height: 9,
           ),
           Container(
             color: Colors.black12,

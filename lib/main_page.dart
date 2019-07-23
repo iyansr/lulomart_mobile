@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
 import 'package:lulomart_mobile/widget/widget_historypage.dart';
-import 'package:lulomart_mobile/widget/widget_right_drawer_storepage.dart';
+import 'package:lulomart_mobile/widget/widget_storepage.dart';
+import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 
 class MainStorePage extends StatefulWidget {
   @override
@@ -25,6 +27,18 @@ class MainStorePageLayout extends State<MainStorePage> {
 
   var mainPage;
   var rightDrawer;
+  var buttonColor;
+  Color btnClr = Colors.red;
+
+  void btnColor() {
+    if (mainPage == StorePage) {
+      // return Colors.white;
+      setState(() {
+        btnClr = Colors.white;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +52,7 @@ class MainStorePageLayout extends State<MainStorePage> {
                 child: Expanded(
                   flex: 2,
                   child: Container(
-                    decoration: new BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
                           Color(0xfff84c35),
@@ -53,7 +67,10 @@ class MainStorePageLayout extends State<MainStorePage> {
                         children: <Widget>[
                           RawMaterialButton(
                             onPressed: () {
-                              setState(() {});
+                              setState(() {
+                                mainPage = ProfilePage();
+                                rightDrawer = RightDrawerProfilePage();
+                              });
                             },
                             child: Icon(
                               Icons.person,
@@ -100,6 +117,22 @@ class MainStorePageLayout extends State<MainStorePage> {
                             },
                             child: Icon(
                               Icons.bookmark,
+                            ),
+                            shape: CircleBorder(),
+                            elevation: 2.0,
+                            fillColor: Color(0xfff96f5d),
+                            padding: const EdgeInsets.all(10.0),
+                          ),
+                          SizedBox(height: 75.0),
+                          RawMaterialButton(
+                            onPressed: () {
+                              setState(() {
+                                mainPage = null;
+                                rightDrawer = null;
+                              });
+                            },
+                            child: Icon(
+                              Icons.person_pin,
                             ),
                             shape: CircleBorder(),
                             elevation: 2.0,
