@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
 import 'package:lulomart_mobile/view/view_history.dart';
+import 'package:lulomart_mobile/view/view_about.dart';
+import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
 import 'package:lulomart_mobile/widget/widget_historypage.dart';
 import 'package:lulomart_mobile/widget/widget_storepage.dart';
@@ -25,7 +27,7 @@ class MainPageLayout extends State<MainPage> {
     mainPage = StorePage();
     rightDrawer = RightDrawerStorePage();
     flexCountNav = 3;
-    flexCountDrawer = 6;
+    flexCountDrawer = 9;
     profileSelColor = Color(0xfff96f5d);
     storeSelColor = Colors.white;
     hisSelColor = Color(0xfff96f5d);
@@ -173,8 +175,8 @@ class MainPageLayout extends State<MainPage> {
                           RawMaterialButton(
                             onPressed: () {
                               setState(() {
-                                mainPage = null;
-                                rightDrawer = null;
+                                mainPage = AboutPage();
+                                rightDrawer = RightDrawerAboutPage();
                                 profileSelColor = Color(0xfff96f5d);
                                 storeSelColor = Color(0xfff96f5d);
                                 hisSelColor = Color(0xfff96f5d);
