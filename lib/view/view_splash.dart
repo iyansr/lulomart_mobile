@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:lulomart_mobile/main_page.dart';
 
-class SplashScreen extends StatefulWidget {
-  @override
-  SplashScreenState createState() => SplashScreenState();
-}
+class SplashScreen extends StatelessWidget {
+  // @override
+  // void initState(){
+  //   super.initState();
 
-class SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    loadData();
-  }
+  //   loadData();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +16,18 @@ class SplashScreenState extends State<SplashScreen> {
         home: Scaffold(
       body: Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.blue[200]),
         ),
       ),
     ));
-  }
 
-  Future<Timer> loadData() async {
-    return Timer(Duration(seconds: 5), onDoneLoading);
-  }
+    onDoneLoading() async {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => MainPage()));
+    }
 
-  onDoneLoading() async {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) => MainPage()));
+    Future<Timer> loadData() async {
+      return Timer(Duration(seconds: 5), onDoneLoading);
+    }
   }
 }
