@@ -37,13 +37,13 @@ class _JurnalPageState extends State<JurnalPage> {
                   ),
                   Expanded(
                     child: Text(
-                      'Keterangan',
+                      'x',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      'Keterangan',
+                      'y',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
