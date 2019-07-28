@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:lulomart_mobile/config/api.dart';
 
 class HistoryList extends StatefulWidget {
   @override
@@ -9,8 +10,10 @@ class HistoryList extends StatefulWidget {
 
 class _HistoryListState extends State<HistoryList> {
   Future<List> getData() async {
-    final response = await http.get(
-        "http://todolist.madukubah.com/api/activity/complete_activities/2");
+
+    Api api = Api();
+    
+    final response = await http.get( api.history );
     return json.decode(response.body);
   }
 

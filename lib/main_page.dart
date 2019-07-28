@@ -9,18 +9,16 @@ import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
 import 'package:lulomart_mobile/widget/widget_historypage.dart';
 import 'package:lulomart_mobile/widget/widget_right_jurnal.dart';
-import 'package:lulomart_mobile/widget/widget_storepage.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 
 class MainPage extends StatefulWidget {
-  // MainPage({this.username});
-  // final String username;
-
+  
   @override
   MainPageLayout createState() => MainPageLayout();
 }
 
 class MainPageLayout extends State<MainPage> {
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +27,16 @@ class MainPageLayout extends State<MainPage> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    mainPage = StorePage();
+    mainPage = StorePage(
+      onListItemTap: (Item item){
+        debugPrint("StorePage : " + item.user);
+         rightDrawer.addReceip( new Receipt(
+           name: item.user,
+           qty: item.favorites,
+           price: item.likes,
+         ) );
+      } ,
+    );
     rightDrawer = RightDrawerStorePage();
     flexCountNav = 3;
     flexCountDrawer = 9;
@@ -103,7 +110,9 @@ class MainPageLayout extends State<MainPage> {
                         RawMaterialButton(
                           onPressed: () {
                             setState(() {
-                              mainPage = StorePage();
+                              mainPage = new StorePage(
+                               onListItemTap :( Item item )=>debugPrint( "item list : "+  item.user ),
+                              );
                               rightDrawer = RightDrawerStorePage();
                               profileSelColor = Color(0xfff96f5d);
                               storeSelColor = Colors.white;

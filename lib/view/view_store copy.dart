@@ -6,60 +6,18 @@ import 'package:lulomart_mobile/config/api.dart';
 import 'package:lulomart_mobile/widget/widget_textfieldicon.dart';
 
 class StorePage extends StatefulWidget {
-  final ValueChanged<Item> onListItemTap;
+  final ValueChanged<String> onListItemTap;
   StorePage({this.onListItemTap});
   @override
-  StorePageLayout createState() => StorePageLayout(onTap: (Item item) {
-        // debugPrint("StorePageitem list : " + item.user);
-        this.onListItemTap(item);
+  StorePageLayout createState() => StorePageLayout(onTap: (String str) {
+        debugPrint("StorePageitem list : " + str);
+        this.onListItemTap(str);
       });
 }
 
 class StorePageLayout extends State<StorePage> {
-  final ValueChanged<Item> onTap;
+  final ValueChanged<String> onTap;
   StorePageLayout({this.onTap});
-  List<ItemCard> itemCard = List();
-
-  getData() async {
-    Api api = Api();
-
-    return http.get(api.item).then((http.Response response) {
-      // debugPrint("$response");
-      var datauser = json.decode(response.body);
-      List listData = datauser['hits'];
-      // debugPrint(datauser['hits'][0]["likes"]);
-      List<ItemCard> items = List();
-
-      for (var i = 0; i < listData.length; i++) {
-        items.add(
-          new ItemCard(
-            onTap: (Item item) {
-              debugPrint("${item.likes}");
-              onTap(item);
-            },
-            item: new Item(
-              webformatURL: listData[i]['webformatURL'],
-              user: listData[i]['user'],
-              favorites: listData[i]['favorites'],
-              likes: listData[i]['likes'],
-            ),
-          ),
-        );
-      }
-
-      setState(() {
-        itemCard = items;
-      });
-
-      // return d;
-    });
-  }
-
-  @override
-  void initState() {
-    getData();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,11 +38,12 @@ class StorePageLayout extends State<StorePage> {
               ),
             ),
             Container(
-                height: 300.0,
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  children: itemCard,
-                )),
+              height: 300.0,
+              child: StoreItemPage(onListItemTap: (String str) {
+              debugPrint( "StorePageLayoutitem list : "+  str );
+              this.onTap(str);
+            }),
+            ),
           ],
         ),
       ),
@@ -92,74 +51,118 @@ class StorePageLayout extends State<StorePage> {
   }
 }
 
-class ItemCard extends StatelessWidget {
-  final ValueChanged<Item> onTap;
-  final Item item;
+class StoreItemPage extends StatefulWidget {
+  final List list;
+  final ValueChanged<String> onListItemTap; 
+  StoreItemPage({this.list, this.onListItemTap});
+  @override
+  _StoreItemPageState createState() => _StoreItemPageState(
+      onTap :( String str ){
+        debugPrint( "StoreItemPage item list : "+  str );
+        onListItemTap( str );
+      }
 
-  const ItemCard({Key key, this.onTap, this.item}) : super(key: key);
+  );
+}
+
+class _StoreItemPageState extends State<StoreItemPage> {
+  final ValueChanged<String> onTap; 
+  _StoreItemPageState({ this.onTap });
+  Future<List> getData() async {
+    Api api = Api();
+
+    return http.get(api.item).then((http.Response response) {
+      var datauser = json.decode(response.body);
+      var d = datauser['hits'];
+      return d;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Center(
-    //   child: new CircularProgressIndicator(),
-    // );
-    return Card(
-      child: InkWell(
-        onTap: () {
-          this.onTap(item);
+    return new Scaffold(
+      body: new FutureBuilder<List>(
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+
+          return snapshot.hasData
+              ? new ItemList(
+                  list: snapshot.data,
+                  onTap:(String str){
+                    debugPrint( "_StoreItemPageStateitem list : "+  str );
+                      this.onTap( str );
+                  }
+                )
+              : new Center(
+                  child: new CircularProgressIndicator(),
+                );
         },
-        child: Column(
-          children: [
-            Image.network(item.webformatURL),
-            Text(item.user),
-            Text("${item.favorites}"),
-            
-          ],
-        ),
       ),
     );
   }
 }
 
-class Item {
-  final String webformatURL;
-  final String user;
-  final int favorites;
-  final int likes;
-
-  Item({this.likes, this.webformatURL, this.user, this.favorites});
+class ItemList extends StatefulWidget {
+  final ValueChanged<String> onTap;
+  final List list;
+  ItemList({this.list, this.onTap});
+  @override
+  _ItemListState createState() => _ItemListState(
+      list: this.list,
+      onTap: (String str) {
+        debugPrint("ItemListitem list : " + str);
+        this.onTap(str);
+      });
 }
 
-class Receipt {
-  final String name;
-  final int qty;
-  final int price;
+class _ItemListState extends State<ItemList> {
+  final ValueChanged<String> onTap;
+  final List list;
+  _ItemListState({this.onTap, this.list});
 
-  Receipt({this.price, this.name, this.qty});
+  @override
+  Widget build(BuildContext context) {
+    return new GridView.builder(
+      gridDelegate:
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      itemCount: widget.list == null ? 0 : widget.list.length,
+      itemBuilder: (context, i) {
+        return new Container(
+          padding: const EdgeInsets.all(3.0),
+          child: Card(
+              child: InkWell(
+            onTap: () {
+              debugPrint(" _ItemListStateitem list : " +
+                  widget.list[i]['user'] +
+                  " " +
+                  "${widget.list[i]['favorites']}");
+              this.onTap(widget.list[i]['user'] +
+                  " " +
+                  "${widget.list[i]['favorites']}");
+            },
+            child: Column(
+              children: [
+                Image.network(widget.list[i]['webformatURL']),
+                Text(widget.list[i]['user']),
+                Text("${widget.list[i]['favorites']}"),
+              ],
+            ),
+          )),
+        );
+      },
+    );
+  }
 }
 
 class RightDrawerStorePage extends StatefulWidget {
   final String id;
-  addReceip(Receipt receipt) {
-    rightDrawerStorePageState.addReceip(receipt);
-  }
-
-  var rightDrawerStorePageState = _RightDrawerStorePageState();
   RightDrawerStorePage({this.id});
   @override
-  _RightDrawerStorePageState createState() => rightDrawerStorePageState;
+  _RightDrawerStorePageState createState() => _RightDrawerStorePageState();
 }
 
 class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
-  List<Receiptcard> receiptTable = List();
-
-  void addReceip(Receipt _receipt) {
-    setState(() {
-      // debugPrint("Receipt : " + receipt.name);
-      this.receiptTable.add(new Receiptcard(receipt: _receipt));
-    });
-  }
-
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black87,
@@ -199,8 +202,25 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                       color: Colors.white,
                     ),
                   ),
-                  Column(
-                    children: receiptTable,
+                  Table(
+                    children: [
+                      TableRow(
+                        children: [
+                          Text(
+                            'Sayur',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            '1',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            'Rp 5.000',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -247,36 +267,6 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class Receiptcard extends StatelessWidget {
-  final Receipt receipt;
-  final Item item;
-
-  const Receiptcard({Key key, this.receipt, this.item}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Table(
-      children: [
-        TableRow(
-          children: [
-            Text(
-              receipt.name,
-              style: TextStyle(color: Colors.white),
-            ), 
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "${receipt.price}",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }

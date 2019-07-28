@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:lulomart_mobile/main_page.dart';
-import 'package:lulomart_mobile/tes.dart';
-import 'package:lulomart_mobile/view/databaseHelper.dart';
-import 'package:lulomart_mobile/view/view_profile.dart';
+import 'package:lulomart_mobile/config/api.dart';
+import 'package:lulomart_mobile/view/view_splash_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 String username = '';
@@ -17,8 +15,6 @@ String email = '';
 String id;
 
 class LoginPage extends StatelessWidget {
-  // LoginPage({Key key, this.title}) : super(key: key);
-  // final String title;
 
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -68,11 +64,10 @@ class _LoginPageFormState extends State<LoginPageForm> {
   String msg = '';
   String pesan = '';
   Future<List> login() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'token';
-    final value = prefs.get(key) ?? 0;
-    final response =
-        await http.post("http://todolist.madukubah.com/api/user/login", body: {
+
+    Api api = Api();
+    
+    final response = await http.post(api.login, body: {
       "identity": user.text,
       "password": pass.text,
     });
@@ -110,20 +105,9 @@ class _LoginPageFormState extends State<LoginPageForm> {
       image(d["image"]);
       password(d["password"]);
 
-      print(d["username"]);
-      
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (BuildContext context) => MainPage()));
-     
-      // setState(() {
-      //   username = d['username'];
-      //   email = d['email'];
-      //   fullname = d['full_name'];
-      //   image = d['image'];
-      //   password = d['password'];
-      // });
+          MaterialPageRoute(builder: (BuildContext context) => SplashScreenLogin()));
     }
-
     return null;
   }
 
@@ -202,8 +186,8 @@ class _LoginPageFormState extends State<LoginPageForm> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: ()=>login(  ),
-        padding: EdgeInsets.all(12),
+        onPressed: () => login(),
+        padding: EdgeInsets.only(top: 12, right: 12, left: 12, bottom: 4),
         color: Colors.red,
         child: Text('Log In', style: TextStyle(color: Colors.white)),
       ),
@@ -222,13 +206,17 @@ class _LoginPageFormState extends State<LoginPageForm> {
               children: <Widget>[
                 SizedBox(height: 15.0),
                 logo,
-                SizedBox(height: 30.0),
+                SizedBox(height: 25.0),
                 email,
                 SizedBox(height: 8.0),
                 password,
-                SizedBox(height: 15.0),
+                SizedBox(height: 10.0),
                 loginButton,
-                // SizedBox(height: 8.0),
+                FlatButton(
+                  onPressed: () {},
+                  child: Text("Forgot Password ?",
+                      style: TextStyle(color: Colors.blue)),
+                ),
               ],
             ),
           ),
