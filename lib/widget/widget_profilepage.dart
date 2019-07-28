@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RightDrawerProfilePage extends StatefulWidget {
   @override
@@ -6,6 +7,30 @@ class RightDrawerProfilePage extends StatefulWidget {
 }
 
 class _RightDrawerProfilePageState extends State<RightDrawerProfilePage> {
+  String email = "";
+  String password = "";
+
+  read() async {
+    final prefs = await SharedPreferences.getInstance();
+    var key = 'email';
+    final value = prefs.get(key) ?? "jgfjhg";
+    key = 'password';
+    final password = prefs.get(key) ?? "jgfjhg";
+
+    setState(() {
+      email = value;
+      this.password = password;
+    });
+    debugPrint('read : $value');
+  }
+
+  @override
+  void initState() {
+    read();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
@@ -29,7 +54,7 @@ class _RightDrawerProfilePageState extends State<RightDrawerProfilePage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: "Harold@gmail.com",
+                    labelText: email,
                     labelStyle: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
@@ -74,7 +99,7 @@ class _RightDrawerProfilePageState extends State<RightDrawerProfilePage> {
                     ),
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: "Old Password",
+                    labelText: password,
                     labelStyle: TextStyle(color: Colors.black),
                   ),
                 ),

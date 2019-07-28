@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
+  List list;
+  int index;
+  ProfilePage({this.index, this.list});
+
   @override
   ProfilePageLayout createState() => ProfilePageLayout();
 }
 
 class ProfilePageLayout extends State<ProfilePage> {
+  String name = "";
+  String image = "";
+  read() async {
+    final prefs = await SharedPreferences.getInstance();
+    var key = 'full_name';
+    final value = prefs.get(key) ?? "jgfjhg";
+    key = 'image';
+    final image = prefs.get(key) ?? "jgfjhg";
+
+    setState(() {
+      name = value;
+      this.image = image;
+    });
+    debugPrint('read : $value');
+  }
+
+  @override
+  void initState() {
+    read();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -22,7 +51,9 @@ class ProfilePageLayout extends State<ProfilePage> {
               padding: const EdgeInsets.all(5.0),
               child: Card(
                 child: Container(
-                  child: Image.asset('assets/images/users.jpeg'),
+                  child: Image.network(
+                      "http://todolist.madukubah.com/uploads/users_photo/" +
+                          image),
                   height: 150,
                   width: 150,
                   margin: const EdgeInsets.all(5.0),
@@ -32,7 +63,7 @@ class ProfilePageLayout extends State<ProfilePage> {
                 ),
               )),
           Text(
-            "Harold",
+            name,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Text(

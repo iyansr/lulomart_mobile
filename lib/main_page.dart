@@ -13,6 +13,9 @@ import 'package:lulomart_mobile/widget/widget_storepage.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 
 class MainPage extends StatefulWidget {
+  // MainPage({this.username});
+  // final String username;
+
   @override
   MainPageLayout createState() => MainPageLayout();
 }
@@ -49,169 +52,166 @@ class MainPageLayout extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Center(
-          child: Row(
-            children: <Widget>[
-              Container(
-                child: Expanded(
-                  flex: flexCountNav,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xfff84c35),
-                          Color(0xfff96f5d),
-                        ],
-                        stops: [0, 1],
-                      ),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Center(
+        child: Row(
+          children: <Widget>[
+            Container(
+              child: Expanded(
+                flex: flexCountNav,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xfff84c35),
+                        Color(0xfff96f5d),
+                      ],
+                      stops: [0, 1],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        children: <Widget>[
-                          //PROFILE BUTTON
-                          RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                mainPage = ProfilePage();
-                                rightDrawer = RightDrawerProfilePage();
-                                profileSelColor = Colors.white;
-                                storeSelColor = Color(0xfff96f5d);
-                                hisSelColor = Color(0xfff96f5d);
-                                jurSelColor = Color(0xfff96f5d);
-                                abtSelColor = Color(0xfff96f5d);
-                                flexCountNav = 5;
-                                flexCountDrawer = 25;
-                              });
-                            },
-                            child: Icon(
-                              Icons.person,
-                            ),
-                            shape: CircleBorder(),
-                            elevation: 2.0,
-                            fillColor: profileSelColor,
-                            padding: const EdgeInsets.all(10.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[
+                        //PROFILE BUTTON
+                        RawMaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              mainPage = ProfilePage();
+                              rightDrawer = RightDrawerProfilePage();
+                              profileSelColor = Colors.white;
+                              storeSelColor = Color(0xfff96f5d);
+                              hisSelColor = Color(0xfff96f5d);
+                              jurSelColor = Color(0xfff96f5d);
+                              abtSelColor = Color(0xfff96f5d);
+                              flexCountNav = 5;
+                              flexCountDrawer = 25;
+                            });
+                          },
+                          child: Icon(
+                            Icons.person,
                           ),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: profileSelColor,
+                          padding: const EdgeInsets.all(10.0),
+                        ),
 
-                          //STORE BUTTON
-                          SizedBox(height: 15.0),
-                          RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                mainPage = StorePage();
-                                rightDrawer = RightDrawerStorePage();
-                                profileSelColor = Color(0xfff96f5d);
-                                storeSelColor = Colors.white;
-                                hisSelColor = Color(0xfff96f5d);
-                                jurSelColor = Color(0xfff96f5d);
-                                abtSelColor = Color(0xfff96f5d);
-                                flexCountNav = 3;
-                                flexCountDrawer = 9;
-                              });
-                            },
-                            child: Icon(
-                              Icons.shopping_cart,
-                            ),
-                            shape: CircleBorder(),
-                            elevation: 2.0,
-                            fillColor: storeSelColor,
-                            padding: const EdgeInsets.all(10.0),
+                        //STORE BUTTON
+                        SizedBox(height: 15.0),
+                        RawMaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              mainPage = StorePage();
+                              rightDrawer = RightDrawerStorePage();
+                              profileSelColor = Color(0xfff96f5d);
+                              storeSelColor = Colors.white;
+                              hisSelColor = Color(0xfff96f5d);
+                              jurSelColor = Color(0xfff96f5d);
+                              abtSelColor = Color(0xfff96f5d);
+                              flexCountNav = 3;
+                              flexCountDrawer = 9;
+                            });
+                          },
+                          child: Icon(
+                            Icons.shopping_cart,
                           ),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: storeSelColor,
+                          padding: const EdgeInsets.all(10.0),
+                        ),
 
-                          //HISTORY BUTTON
-                          SizedBox(height: 5.0),
-                          RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                mainPage = HistoryPage();
-                                rightDrawer = RightDrawerHistoryPage();
-                                profileSelColor = Color(0xfff96f5d);
-                                storeSelColor = Color(0xfff96f5d);
-                                hisSelColor = Colors.white;
-                                jurSelColor = Color(0xfff96f5d);
-                                abtSelColor = Color(0xfff96f5d);
-                                flexCountNav = 3;
-                                flexCountDrawer = 9;
-                              });
-                            },
-                            child: Icon(
-                              Icons.local_offer,
-                            ),
-                            shape: CircleBorder(),
-                            elevation: 2.0,
-                            fillColor: hisSelColor,
-                            padding: const EdgeInsets.all(10.0),
+                        //HISTORY BUTTON
+                        SizedBox(height: 5.0),
+                        RawMaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              mainPage = HistoryPage();
+                              rightDrawer = RightDrawerHistoryPage();
+                              profileSelColor = Color(0xfff96f5d);
+                              storeSelColor = Color(0xfff96f5d);
+                              hisSelColor = Colors.white;
+                              jurSelColor = Color(0xfff96f5d);
+                              abtSelColor = Color(0xfff96f5d);
+                              flexCountNav = 3;
+                              flexCountDrawer = 9;
+                            });
+                          },
+                          child: Icon(
+                            Icons.local_offer,
                           ),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: hisSelColor,
+                          padding: const EdgeInsets.all(10.0),
+                        ),
 
-                          //JOURNAL BUTTON
-                          SizedBox(height: 5.0),
-                          RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                mainPage = JurnalPage();
-                                rightDrawer = RightDrawerJurnal();
-                                profileSelColor = Color(0xfff96f5d);
-                                storeSelColor = Color(0xfff96f5d);
-                                hisSelColor = Color(0xfff96f5d);
-                                jurSelColor = Colors.white;
-                                abtSelColor = Color(0xfff96f5d);
-                                flexCountNav = 3;
-                                flexCountDrawer = 9;
-                              });
-                            },
-                            child: Icon(
-                              Icons.book,
-                            ),
-                            shape: CircleBorder(),
-                            elevation: 2.0,
-                            fillColor: jurSelColor,
-                            padding: const EdgeInsets.all(10.0),
+                        //JOURNAL BUTTON
+                        SizedBox(height: 5.0),
+                        RawMaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              mainPage = JurnalPage();
+                              rightDrawer = RightDrawerJurnal();
+                              profileSelColor = Color(0xfff96f5d);
+                              storeSelColor = Color(0xfff96f5d);
+                              hisSelColor = Color(0xfff96f5d);
+                              jurSelColor = Colors.white;
+                              abtSelColor = Color(0xfff96f5d);
+                              flexCountNav = 3;
+                              flexCountDrawer = 9;
+                            });
+                          },
+                          child: Icon(
+                            Icons.book,
                           ),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: jurSelColor,
+                          padding: const EdgeInsets.all(10.0),
+                        ),
 
-                          //ABOUT BUTTON
-                          SizedBox(height: 75.0),
-                          RawMaterialButton(
-                            onPressed: () {
-                              setState(() {
-                                mainPage = AboutPage();
-                                rightDrawer = RightDrawerAboutPage();
-                                profileSelColor = Color(0xfff96f5d);
-                                storeSelColor = Color(0xfff96f5d);
-                                hisSelColor = Color(0xfff96f5d);
-                                jurSelColor = Color(0xfff96f5d);
-                                abtSelColor = Colors.white;
-                                flexCountNav = 3;
-                                flexCountDrawer = 9;
-                              });
-                            },
-                            child: Icon(
-                              Icons.person_pin,
-                            ),
-                            shape: CircleBorder(),
-                            elevation: 2.0,
-                            fillColor: abtSelColor,
-                            padding: const EdgeInsets.all(10.0),
+                        //ABOUT BUTTON
+                        SizedBox(height: 75.0),
+                        RawMaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              mainPage = AboutPage();
+                              rightDrawer = RightDrawerAboutPage();
+                              profileSelColor = Color(0xfff96f5d);
+                              storeSelColor = Color(0xfff96f5d);
+                              hisSelColor = Color(0xfff96f5d);
+                              jurSelColor = Color(0xfff96f5d);
+                              abtSelColor = Colors.white;
+                              flexCountNav = 3;
+                              flexCountDrawer = 9;
+                            });
+                          },
+                          child: Icon(
+                            Icons.person_pin,
                           ),
-                        ],
-                      ),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: abtSelColor,
+                          padding: const EdgeInsets.all(10.0),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              Expanded(
-                flex: 15,
-                child: mainPage,
-              ),
-              Expanded(
-                flex: flexCountDrawer,
-                child: rightDrawer,
-              ),
-            ],
-          ),
+            ),
+            Expanded(
+              flex: 15,
+              child: mainPage,
+            ),
+            Expanded(
+              flex: flexCountDrawer,
+              child: rightDrawer,
+            ),
+          ],
         ),
       ),
     );

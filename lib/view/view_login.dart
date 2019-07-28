@@ -1,7 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:lulomart_mobile/main_page.dart';
+import 'package:lulomart_mobile/tes.dart';
+import 'package:lulomart_mobile/view/databaseHelper.dart';
+import 'package:lulomart_mobile/view/view_profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String username = '';
+String image = '';
+String password = '';
+String fullname = '';
+String email = '';
+String id;
 
 class LoginPage extends StatelessWidget {
+  // LoginPage({Key key, this.title}) : super(key: key);
+  // final String title;
+
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
@@ -23,11 +41,127 @@ class LoginPage extends StatelessWidget {
           child: LoginPageForm(),
         ),
       ),
+      // routes: <String, WidgetBuilder>{
+      //   '/MainPage': (BuildContext context) => new MainPage(),
+      // },
     );
   }
 }
 
-class LoginPageForm extends StatelessWidget {
+class LoginPageForm extends StatefulWidget {
+  @override
+  _LoginPageFormState createState() => _LoginPageFormState();
+}
+
+class _LoginPageFormState extends State<LoginPageForm> {
+  bool _secureText = true;
+
+  showHide() {
+    setState(() {
+      _secureText = !_secureText;
+    });
+  }
+
+  TextEditingController user =
+      new TextEditingController(text: "alan@gmail.com");
+  TextEditingController pass = new TextEditingController(text: "alan");
+  String msg = '';
+  String pesan = '';
+  Future<List> login() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = prefs.get(key) ?? 0;
+    final response =
+        await http.post("http://todolist.madukubah.com/api/user/login", body: {
+      "identity": user.text,
+      "password": pass.text,
+    });
+
+    var datauser = json.decode(response.body);
+    var d = datauser['user_data'];
+    print(d);
+    print(user.text);
+
+    if (datauser['status'] == 0) {
+      setState(() {
+        pesan = "Username atau password salah!";
+      });
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("Login"),
+            content: new Text("$pesan"),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text("Close"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      username(d["username"]);
+      email(d["email"]);
+      fullname(d["full_name"]);
+      image(d["image"]);
+      password(d["password"]);
+
+      print(d["username"]);
+      
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => MainPage()));
+     
+      // setState(() {
+      //   username = d['username'];
+      //   email = d['email'];
+      //   fullname = d['full_name'];
+      //   image = d['image'];
+      //   password = d['password'];
+      // });
+    }
+
+    return null;
+  }
+
+  username(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'username';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
+  email(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'email';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
+  fullname(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'full_name';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
+  image(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'image';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
+  password(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'password';
+    final value = token;
+    prefs.setString(key, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -40,7 +174,7 @@ class LoginPageForm extends StatelessWidget {
 
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
-      initialValue: '',
+      controller: user,
       decoration: InputDecoration(
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -49,10 +183,14 @@ class LoginPageForm extends StatelessWidget {
     );
 
     final password = TextFormField(
-      initialValue: '',
-      obscureText: true,
+      controller: pass,
+      obscureText: _secureText,
       decoration: InputDecoration(
         hintText: 'Password',
+        suffixIcon: IconButton(
+          onPressed: showHide,
+          icon: Icon(_secureText ? Icons.visibility : Icons.visibility_off),
+        ),
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
       ),
@@ -64,7 +202,7 @@ class LoginPageForm extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
         ),
-        onPressed: () {},
+        onPressed: ()=>login(  ),
         padding: EdgeInsets.all(12),
         color: Colors.red,
         child: Text('Log In', style: TextStyle(color: Colors.white)),
@@ -90,6 +228,7 @@ class LoginPageForm extends StatelessWidget {
                 password,
                 SizedBox(height: 15.0),
                 loginButton,
+                // SizedBox(height: 8.0),
               ],
             ),
           ),
