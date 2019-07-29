@@ -24,24 +24,21 @@ class StorePageLayout extends State<StorePage> {
     Api api = Api();
 
     return http.get(api.item).then((http.Response response) {
-      // debugPrint("$response");
       var datauser = json.decode(response.body);
-      // List datauser = datauser;
-      debugPrint(datauser[0]["product_picture"]);
+      // debugPrint(datauser[0]["product_picture"]);
       List<ItemCard> items = List();
 
       for (var i = 0; i < datauser.length; i++) {
         items.add(
           new ItemCard(
             onTap: (Item item) {
-              debugPrint("${item.productPrice}");
+              // debugPrint("${item.productPrice}");
               onTap(item);
             },
             item: new Item(
               productPicture  : datauser[i]['product_picture'],
               productName     : datauser[i]['product_name'],
               productPrice    : datauser[i]['product_price'],
-              
             ),
           ),
         );
@@ -50,6 +47,7 @@ class StorePageLayout extends State<StorePage> {
       setState(() {
         itemCard = items;
       });
+
     });
   }
 
@@ -80,7 +78,7 @@ class StorePageLayout extends State<StorePage> {
             Container(
                 height: 400.0,
                 child: GridView.count(
-                  crossAxisCount: 1,
+                  crossAxisCount: 3,
                   children: itemCard,
                 )),
           ],
@@ -105,10 +103,11 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           this.onTap(item);
+
         },
         child: Column(
           children: [
-            Image.network(item.productPicture),
+            Image.network('https://www.lulomart.com/inventory/upload/product/'+item.productPicture),
             Text(item.productName),
             Text("${item.productPrice}"),
           ],
