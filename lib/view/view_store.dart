@@ -134,13 +134,13 @@ class Receipt {
 }
 
 class RightDrawerStorePage extends StatefulWidget {
-  final String id;
+  // final String id;
   addReceip(Receipt receipt) {
     rightDrawerStorePageState.addReceip(receipt);
   }
 
   var rightDrawerStorePageState = _RightDrawerStorePageState();
-  RightDrawerStorePage({this.id});
+  // RightDrawerStorePage({this.id});
   @override
   _RightDrawerStorePageState createState() => rightDrawerStorePageState;
 }
