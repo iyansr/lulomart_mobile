@@ -72,8 +72,7 @@ class _HistoryListState extends State<HistoryList> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   height: 500.0,
-                  child: GridView.count(
-                    crossAxisCount: 1,
+                  child: ListView(
                     children: itemCard,
                   )),
             ),
@@ -97,46 +96,52 @@ class ItemCard extends StatelessWidget {
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
         children: <TableRow>[
           TableRow(children: <Widget>[
-            Container(
-              width: 500,
-              child: Column(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        (item.transaksiId),
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(item.transaksiTotalprice),
-                      Text(item.transaksiDate),
-                    ],
-                  )
-                ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: 500,
+                child: Column(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Text(
+                          (item.transaksiId),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(item.transaksiTotalprice),
+                        Text(item.transaksiDate),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(item.transaksiTotalprice),
-                      RaisedButton(
-                        child: const Text(
-                          'Details',
-                          style: TextStyle(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Text(item.transaksiTotalprice),
+                        RaisedButton(
+                          child: const Text(
+                            'Details',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          color: Colors.red,
+                          elevation: 4.0,
+                          onPressed: () {
+                            this.onTap(item);
+                          },
                         ),
-                        color: Colors.red,
-                        elevation: 4.0,
-                        onPressed: () {
-                          this.onTap(item);
-                        },
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ])
