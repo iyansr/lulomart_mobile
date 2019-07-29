@@ -26,23 +26,22 @@ class StorePageLayout extends State<StorePage> {
     return http.get(api.item).then((http.Response response) {
       // debugPrint("$response");
       var datauser = json.decode(response.body);
-      List listData = datauser['hits'];
-      // debugPrint(datauser['hits'][0]["likes"]);
+      // List datauser = datauser;
+      debugPrint(datauser[0]["product_picture"]);
       List<ItemCard> items = List();
 
-      for (var i = 0; i < listData.length; i++) {
+      for (var i = 0; i < datauser.length; i++) {
         items.add(
           new ItemCard(
             onTap: (Item item) {
-              debugPrint("${item.likes}");
+              debugPrint("${item.productPrice}");
               onTap(item);
             },
             item: new Item(
-              webformatURL: listData[i]['webformatURL'],
-              user: listData[i]['user'],
-              favorites: listData[i]['favorites'],
-              likes: listData[i]['likes'],
-              jumlah: i,
+              productPicture  : datauser[i]['product_picture'],
+              productName     : datauser[i]['product_name'],
+              productPrice    : datauser[i]['product_price'],
+              
             ),
           ),
         );
@@ -51,8 +50,6 @@ class StorePageLayout extends State<StorePage> {
       setState(() {
         itemCard = items;
       });
-
-      // return d;
     });
   }
 
@@ -81,9 +78,9 @@ class StorePageLayout extends State<StorePage> {
               ),
             ),
             Container(
-                height: 300.0,
+                height: 400.0,
                 child: GridView.count(
-                  crossAxisCount: 3,
+                  crossAxisCount: 1,
                   children: itemCard,
                 )),
           ],
@@ -111,9 +108,9 @@ class ItemCard extends StatelessWidget {
         },
         child: Column(
           children: [
-            Image.network(item.webformatURL),
-            Text(item.user),
-            Text("${item.favorites}"),
+            Image.network(item.productPicture),
+            Text(item.productName),
+            Text("${item.productPrice}"),
           ],
         ),
       ),
@@ -122,20 +119,17 @@ class ItemCard extends StatelessWidget {
 }
 
 class Item {
-  final String webformatURL;
-  final String user;
-  final int favorites;
-  final int likes;
-  final int jumlah;
+  final String productPicture;
+  final String productName;
+  final String productPrice;
 
-  Item({this.jumlah, this.likes, this.webformatURL, this.user, this.favorites});
+  Item({this.productPicture, this.productName, this.productPrice,});
 }
 
 class Receipt {
   final String name;
-  final int qty;
-  final int price;
- 
+  final String qty;
+  final String price;
 
   Receipt({this.price, this.name, this.qty});
 }
@@ -161,7 +155,12 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       this.receiptTable.add(new Receiptcard(receipt: _receipt));
     });
   }
+  // void clear(){
+  //   setState(() {
+  //    Text("data");
 
+  //   });
+  // }
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black87,
@@ -231,7 +230,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                   color: Colors.red[300],
                   elevation: 4.0,
                   onPressed: () {
-                    
+                    //  clear();
                   },
                 ),
                 RaisedButton(
@@ -271,11 +270,11 @@ class Receiptcard extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             Text(
-              "${receipt.price}",
+              "${receipt.qty}",
               style: TextStyle(color: Colors.white),
             ),
             Text(
-              "${receipt.qty}",
+              "${receipt.price}",
               style: TextStyle(color: Colors.white),
             ),
           ],

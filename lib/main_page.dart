@@ -29,11 +29,11 @@ class MainPageLayout extends State<MainPage> {
     ]);
     mainPage = StorePage(
       onListItemTap: (Item item){
-        debugPrint("StorePage : " + item.user);
+        debugPrint("StorePage : " + item.productPicture);
          rightDrawer.addReceip( new Receipt(
-           name: item.user,
-           qty: item.jumlah,
-           price: item.likes,
+           name: item.productName,
+           qty: item.productPrice,
+           price: item.productPrice,
          ) );
       } ,
     );
@@ -111,7 +111,7 @@ class MainPageLayout extends State<MainPage> {
                           onPressed: () {
                             setState(() {
                               mainPage = new StorePage(
-                               onListItemTap :( Item item )=>debugPrint( "item list : "+  item.user ),
+                               onListItemTap :( Item item )=>debugPrint( "item list : "+  item.productName ),
                               );
                               rightDrawer = RightDrawerStorePage();
                               profileSelColor = Color(0xfff96f5d);
