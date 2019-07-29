@@ -42,6 +42,7 @@ class StorePageLayout extends State<StorePage> {
               user: listData[i]['user'],
               favorites: listData[i]['favorites'],
               likes: listData[i]['likes'],
+              jumlah: i,
             ),
           ),
         );
@@ -113,7 +114,6 @@ class ItemCard extends StatelessWidget {
             Image.network(item.webformatURL),
             Text(item.user),
             Text("${item.favorites}"),
-            
           ],
         ),
       ),
@@ -126,14 +126,16 @@ class Item {
   final String user;
   final int favorites;
   final int likes;
+  final int jumlah;
 
-  Item({this.likes, this.webformatURL, this.user, this.favorites});
+  Item({this.jumlah, this.likes, this.webformatURL, this.user, this.favorites});
 }
 
 class Receipt {
   final String name;
   final int qty;
   final int price;
+ 
 
   Receipt({this.price, this.name, this.qty});
 }
@@ -228,7 +230,9 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                   child: const Text('Cancel'),
                   color: Colors.red[300],
                   elevation: 4.0,
-                  onPressed: () {},
+                  onPressed: () {
+                    
+                  },
                 ),
                 RaisedButton(
                   child: const Text('Hold'),
@@ -265,13 +269,13 @@ class Receiptcard extends StatelessWidget {
             Text(
               receipt.name,
               style: TextStyle(color: Colors.white),
-            ), 
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
             ),
             Text(
               "${receipt.price}",
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              "${receipt.qty}",
               style: TextStyle(color: Colors.white),
             ),
           ],

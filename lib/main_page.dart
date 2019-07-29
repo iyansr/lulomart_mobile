@@ -32,7 +32,7 @@ class MainPageLayout extends State<MainPage> {
         debugPrint("StorePage : " + item.user);
          rightDrawer.addReceip( new Receipt(
            name: item.user,
-           qty: item.favorites,
+           qty: item.jumlah,
            price: item.likes,
          ) );
       } ,
