@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_jurnal.dart';
+import 'package:lulomart_mobile/view/view_login.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
-import 'package:lulomart_mobile/view/view_login.dart';
+import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_about.dart';
 import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
@@ -192,6 +193,7 @@ class MainPageLayout extends State<MainPage> {
                         //ABOUT BUTTON
                         SizedBox(height: 75.0),
                         Align(
+      
                           alignment: Alignment.bottomCenter,
                           child: RawMaterialButton(
                             onPressed: () {

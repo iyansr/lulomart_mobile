@@ -75,7 +75,7 @@ class StorePageLayout extends State<StorePage> {
               ),
             ),
             Container(
-                height: 400.0,
+                height: 500.0,
                 child: GridView.count(
                   crossAxisCount: 3,
                   children: itemCard,
@@ -98,18 +98,21 @@ class ItemCard extends StatelessWidget {
     // Center(
     //   child: new CircularProgressIndicator(),
     // );
-    return Card(
-      child: InkWell(
-        onTap: () {
-          this.onTap(item);
-        },
-        child: Column(
-          children: [
-            Image.network('https://www.lulomart.com/inventory/upload/product/' +
-                item.productPicture),
-            Text(item.productName),
-            Text("${item.productPrice}"),
-          ],
+    return Container(
+      height: 250,
+      child: Card(
+        child: InkWell(
+          onTap: () {
+            this.onTap(item);
+          },
+          child: Column(
+            children: [
+              Image.network('https://www.lulomart.com/inventory/upload/product/' +
+                  item.productPicture),
+              Text(item.productName),
+              Text("${item.productPrice}"),
+            ],
+          ),
         ),
       ),
     );
