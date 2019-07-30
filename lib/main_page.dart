@@ -191,8 +191,33 @@ class MainPageLayout extends State<MainPage> {
 
                       //ABOUT BUTTON
                       SizedBox(height: 75.0),
+                      RawMaterialButton(
+                        onPressed: () {
+                          setState(() {
+                            mainPage = AboutPage();
+                            rightDrawer = RightDrawerAboutPage();
+                            profileSelColor = Color(0xfff96f5d);
+                            storeSelColor = Color(0xfff96f5d);
+                            hisSelColor = Color(0xfff96f5d);
+                            jurSelColor = Color(0xfff96f5d);
+                            abtSelColor = Colors.white;
+                            flexCountNav = 3;
+                            flexCountDrawer = 9;
+                          });
+                        },
+                        child: Icon(
+                          Icons.person_pin,
+                        ),
+                        shape: CircleBorder(),
+                        elevation: 2.0,
+                        fillColor: abtSelColor,
+                        padding: const EdgeInsets.all(10.0),
+                      ),
+
+                      //LOGOUT BUTTON
+                      SizedBox(height: 75.0),
                       Align(
-                        alignment: Alignment.bottomCenter,
+                        alignment: AlignmentDirectional.bottomCenter,
                         child: RawMaterialButton(
                           onPressed: () {
                             setState(() {
@@ -202,13 +227,13 @@ class MainPageLayout extends State<MainPage> {
                               storeSelColor = Color(0xfff96f5d);
                               hisSelColor = Color(0xfff96f5d);
                               jurSelColor = Color(0xfff96f5d);
-                              abtSelColor = Colors.white;
+                              abtSelColor = Color(0xfff96f5d);
                               flexCountNav = 3;
                               flexCountDrawer = 9;
                             });
                           },
                           child: Icon(
-                            Icons.person_pin,
+                            Icons.exit_to_app,
                           ),
                           shape: CircleBorder(),
                           elevation: 2.0,
