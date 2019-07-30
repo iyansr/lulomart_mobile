@@ -237,7 +237,7 @@ class MainPageLayout extends State<MainPage> {
                           ),
                           shape: CircleBorder(),
                           elevation: 2.0,
-                          fillColor: abtSelColor,
+                          fillColor: Color(0xfff96f5d),
                           padding: const EdgeInsets.all(10.0),
                         ),
                       ),
