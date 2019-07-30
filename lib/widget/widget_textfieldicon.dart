@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_mobile/config/api.dart';
+import 'package:lulomart_mobile/config/note.dart';
 
 class TextFieldIcon extends StatefulWidget {
   @override
@@ -11,6 +12,24 @@ class TextFieldIcon extends StatefulWidget {
 
 class _TextFieldIconState extends State<TextFieldIcon> {
   List<ItemCard> itemCard = List();
+
+  List<Note> _notes = List<Note>();
+  List<Note> _notesForDisplay = List<Note>();
+
+  Future<List<Note>> fetchNotes() async {
+    var url = "http://www.lulomart.com/inventory/index.php/api/product";
+    var response = await http.get(url);
+    
+    var notes = List<Note>();
+    
+    if (response.statusCode == 200) {
+      var notesJson = json.decode(response.body);
+      for (var noteJson in notesJson) {
+        notes.add(Note.fromJson(noteJson));
+      }
+    }
+    return notes;
+  }
 
   getData() async {
     Api api = Api();
@@ -43,6 +62,12 @@ class _TextFieldIconState extends State<TextFieldIcon> {
   @override
   void initState() {
     getData();
+    fetchNotes().then((value) {
+      setState(() {
+        _notes.addAll(value);
+        _notesForDisplay = _notes;
+      });
+    });
     super.initState();
   }
 
@@ -73,6 +98,25 @@ class _TextFieldIconState extends State<TextFieldIcon> {
             ),
           ],
         ),
+      ),
+    );
+  }
+  _searchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search...'
+        ),
+        onChanged: (text) {
+          text = text.toLowerCase();
+          setState(() {
+            _notesForDisplay = _notes.where((note) {
+              var noteTitle = note.title.toLowerCase();
+              return noteTitle.contains(text);
+            }).toList();
+          });
+        },
       ),
     );
   }
