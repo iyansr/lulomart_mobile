@@ -98,21 +98,26 @@ class ItemCard extends StatelessWidget {
     // Center(
     //   child: new CircularProgressIndicator(),
     // );
-    return Container(
-      height: 250,
-      child: Card(
-        child: InkWell(
-          onTap: () {
-            this.onTap(item);
-          },
-          child: Column(
-            children: [
-              Image.network('https://www.lulomart.com/inventory/upload/product/' +
-                  item.productPicture),
-              Text(item.productName),
-              Text("${item.productPrice}"),
-            ],
-          ),
+
+    String a = 'https://www.lulomart.com/inventory/upload/product/' +
+                item.productPicture;
+    return Card(
+      child: InkWell(
+        onTap: () {
+          this.onTap(item);
+        },
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: NetworkImage(a),
+                fit: BoxFit.cover,)
+              ),
+            ),
+            Text(item.productName),
+            Text("${item.productPrice}"),
+          ],
         ),
       ),
     );
