@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_jurnal.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
+import 'package:lulomart_mobile/view/view_login.dart';
 import 'package:lulomart_mobile/view/view_about.dart';
 import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
@@ -92,9 +93,8 @@ class MainPageLayout extends State<MainPage> {
                               flexCountDrawer = 25;
                             });
                           },
-                          child: Icon(
-                            Icons.person,
-                          ),
+                          child: Image.network("http://todolist.madukubah.com/uploads/users_photo/" +
+                          image),
                           shape: CircleBorder(),
                           elevation: 2.0,
                           fillColor: profileSelColor,
