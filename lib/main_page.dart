@@ -103,7 +103,7 @@ class MainPageLayout extends State<MainPage> {
                       ),
 
                       //STORE BUTTON
-                      SizedBox(height: 15.0),
+                      SizedBox(height: 25.0),
                       RawMaterialButton(
                         onPressed: () {
                           setState(() {
@@ -190,7 +190,7 @@ class MainPageLayout extends State<MainPage> {
                       ),
 
                       //ABOUT BUTTON
-                      SizedBox(height: 75.0),
+                      SizedBox(height: 5.0),
                       RawMaterialButton(
                         onPressed: () {
                           setState(() {
@@ -215,7 +215,7 @@ class MainPageLayout extends State<MainPage> {
                       ),
 
                       //LOGOUT BUTTON
-                      SizedBox(height: 75.0),
+                      SizedBox(height: 90.0),
                       Align(
                         alignment: AlignmentDirectional.bottomCenter,
                         child: RawMaterialButton(
