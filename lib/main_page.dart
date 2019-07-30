@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_jurnal.dart';
 import 'package:lulomart_mobile/view/view_login.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
+import 'package:lulomart_mobile/view/view_splash_logout.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_about.dart';
@@ -228,17 +229,33 @@ class MainPageLayout extends State<MainPage> {
                         alignment: AlignmentDirectional.bottomCenter,
                         child: RawMaterialButton(
                           onPressed: () {
-                            setState(() {
-                              mainPage = AboutPage();
-                              rightDrawer = RightDrawerAboutPage();
-                              profileSelColor = Color(0xfff96f5d);
-                              storeSelColor = Color(0xfff96f5d);
-                              hisSelColor = Color(0xfff96f5d);
-                              jurSelColor = Color(0xfff96f5d);
-                              abtSelColor = Color(0xfff96f5d);
-                              flexCountNav = 3;
-                              flexCountDrawer = 9;
-                            });
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: new Text("Logout"),
+                                  content: new Text("Anda Ingin Logout ?"),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: new Text("Iya"),
+                                      onPressed: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        SplashScreenLogout()));
+                                      },
+                                    ),
+                                    FlatButton(
+                                      child: new Text("Tidak"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                           child: Icon(
                             Icons.exit_to_app,
