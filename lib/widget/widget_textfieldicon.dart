@@ -96,6 +96,7 @@ class ItemCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(25),
         ),
         child: RawMaterialButton(
+          splashColor: Colors.red,
           onPressed: () {},
           child: Text(
             item.productcategoryname,
