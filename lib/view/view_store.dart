@@ -178,7 +178,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
         children: <Widget>[
           Container(
             color: Colors.black38,
-            height: 190,
+            height: 250,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -232,7 +232,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
             ),
           ),
           Divider(color: Colors.white),
-          Container(
+          SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 RaisedButton(
