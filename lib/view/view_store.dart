@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:lulomart_mobile/config/api.dart';
 import 'package:lulomart_mobile/widget/widget_textfieldicon.dart';
-import 'package:flutter_pagewise/flutter_pagewise.dart';
 
 class StorePage extends StatefulWidget {
   final ValueChanged<Item> onListItemTap;
