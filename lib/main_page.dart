@@ -3,22 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_jurnal.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
-import 'package:lulomart_mobile/view/view_history.dart';
 import 'package:lulomart_mobile/view/view_about.dart';
 import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
-import 'package:lulomart_mobile/widget/widget_historypage.dart';
 import 'package:lulomart_mobile/widget/widget_right_jurnal.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 
 class MainPage extends StatefulWidget {
-  
   @override
   MainPageLayout createState() => MainPageLayout();
 }
 
 class MainPageLayout extends State<MainPage> {
-
   @override
   void initState() {
     super.initState();
@@ -28,14 +24,14 @@ class MainPageLayout extends State<MainPage> {
       DeviceOrientation.landscapeRight,
     ]);
     mainPage = StorePage(
-      onListItemTap: (Item item){
+      onListItemTap: (Item item) {
         debugPrint("StorePage : " + item.productPicture);
-         rightDrawer.addReceip( new Receipt(
-           name: item.productName,
-           qty: item.productPrice,
-           price: item.productPrice,
-         ) );
-      } ,
+        rightDrawer.addReceip(new Receipt(
+          name: item.productName,
+          qty: item.productPrice,
+          price: item.productPrice,
+        ));
+      },
     );
     rightDrawer = RightDrawerStorePage();
     flexCountNav = 3;
@@ -111,7 +107,8 @@ class MainPageLayout extends State<MainPage> {
                           onPressed: () {
                             setState(() {
                               mainPage = new StorePage(
-                               onListItemTap :( Item item )=>debugPrint( "item list : "+  item.productName ),
+                                onListItemTap: (Item item) => debugPrint(
+                                    "item list : " + item.productName),
                               );
                               rightDrawer = RightDrawerStorePage();
                               profileSelColor = Color(0xfff96f5d);
@@ -137,7 +134,17 @@ class MainPageLayout extends State<MainPage> {
                         RawMaterialButton(
                           onPressed: () {
                             setState(() {
-                              mainPage = HistoryPage();
+                              mainPage = HistoryList(
+                                onListItemTapHistory: (ItemHistory item) {
+                                  debugPrint(
+                                      "StorePage : " + item.transaksiDate);
+                                  rightDrawer.addReceip(new ReceiptHistory(
+                                    name: item.transaksiTotalprice,
+                                    qty: item.transaksiTotalprice,
+                                    price: item.transaksiTotalprice,
+                                  ));
+                                },
+                              );
                               rightDrawer = RightDrawerHistoryPage();
                               profileSelColor = Color(0xfff96f5d);
                               storeSelColor = Color(0xfff96f5d);

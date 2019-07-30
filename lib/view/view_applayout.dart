@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
-import 'package:lulomart_mobile/view/view_history.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
-import 'package:lulomart_mobile/widget/widget_historypage.dart';
+import 'package:lulomart_mobile/widget/widget_historylist.dart';
 
 class App extends StatefulWidget {
   @override
@@ -86,7 +85,7 @@ class AppLayout extends State<App> {
                   ),
                 ),
               ),
-              HistoryPage(),
+              HistoryList(),
               RightDrawerHistoryPage(),
             ],
           ),

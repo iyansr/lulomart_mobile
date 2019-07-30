@@ -36,9 +36,9 @@ class StorePageLayout extends State<StorePage> {
               onTap(item);
             },
             item: new Item(
-              productPicture  : datauser[i]['product_picture'],
-              productName     : datauser[i]['product_name'],
-              productPrice    : datauser[i]['product_price'],
+              productPicture: datauser[i]['product_picture'],
+              productName: datauser[i]['product_name'],
+              productPrice: datauser[i]['product_price'],
             ),
           ),
         );
@@ -47,7 +47,6 @@ class StorePageLayout extends State<StorePage> {
       setState(() {
         itemCard = items;
       });
-
     });
   }
 
@@ -103,11 +102,11 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           this.onTap(item);
-
         },
         child: Column(
           children: [
-            Image.network('https://www.lulomart.com/inventory/upload/product/'+item.productPicture),
+            Image.network('https://www.lulomart.com/inventory/upload/product/' +
+                item.productPicture),
             Text(item.productName),
             Text("${item.productPrice}"),
           ],
@@ -122,7 +121,11 @@ class Item {
   final String productName;
   final String productPrice;
 
-  Item({this.productPicture, this.productName, this.productPrice,});
+  Item({
+    this.productPicture,
+    this.productName,
+    this.productPrice,
+  });
 }
 
 class Receipt {
@@ -134,13 +137,13 @@ class Receipt {
 }
 
 class RightDrawerStorePage extends StatefulWidget {
-  final String id;
+  // final String id;
   addReceip(Receipt receipt) {
     rightDrawerStorePageState.addReceip(receipt);
   }
 
   var rightDrawerStorePageState = _RightDrawerStorePageState();
-  RightDrawerStorePage({this.id});
+  // RightDrawerStorePage({this.id});
   @override
   _RightDrawerStorePageState createState() => rightDrawerStorePageState;
 }
