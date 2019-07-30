@@ -190,7 +190,7 @@ class MainPageLayout extends State<MainPage> {
                       ),
 
                       //ABOUT BUTTON
-                      SizedBox(height: 75.0),
+                      SizedBox(height: 5.0),
                       RawMaterialButton(
                         onPressed: () {
                           setState(() {
