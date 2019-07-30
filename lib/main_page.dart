@@ -110,11 +110,13 @@ class MainPageLayout extends State<MainPage> {
                             mainPage = new StorePage(
                               onListItemTap: (Item item) {
                                 debugPrint("item list : " + item.productName);
-                                rightDrawer.addReceip(new Receipt(
-                                  name: item.productName,
-                                  qty: item.productPrice,
-                                  price: item.productPrice,
-                                ));
+                                rightDrawer.addReceip(
+                                  new Receipt(
+                                    name: item.productName,
+                                    qty: item.productPrice,
+                                    price: item.productPrice,
+                                  ),
+                                );
                               },
                             );
                             rightDrawer = RightDrawerStorePage();
