@@ -9,7 +9,8 @@ class HistoryList extends StatefulWidget {
   HistoryList({this.onListItemTapHistory});
 
   @override
-  _HistoryListState createState() => _HistoryListState(onTap: (ItemHistory item) {
+  _HistoryListState createState() =>
+      _HistoryListState(onTap: (ItemHistory item) {
         // debugPrint("StorePageitem list : " + item.user);
         this.onListItemTapHistory(item);
       });
@@ -57,7 +58,7 @@ class _HistoryListState extends State<HistoryList> {
     super.initState();
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
@@ -162,6 +163,7 @@ class ItemHistory {
     this.transaksiTotalprice,
   });
 }
+
 class ReceiptHistory {
   final String name;
   final String qty;
@@ -243,7 +245,8 @@ class _RightDrawerHistoryPageState extends State<RightDrawerHistoryPage> {
                       color: Colors.white,
                     ),
                   ),
-                  Text("Total Trx : Rp.680.000", style: TextStyle(color: Colors.white)),
+                  Text("Total Trx : Rp.680.000",
+                      style: TextStyle(color: Colors.white)),
                 ],
               ),
             ),
@@ -301,4 +304,3 @@ class Receiptcard extends StatelessWidget {
     );
   }
 }
-

@@ -15,7 +15,6 @@ String email = '';
 String id;
 
 class LoginPage extends StatelessWidget {
-
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
@@ -64,9 +63,8 @@ class _LoginPageFormState extends State<LoginPageForm> {
   String msg = '';
   String pesan = '';
   Future<List> login() async {
-
     Api api = Api();
-    
+
     final response = await http.post(api.login, body: {
       "identity": user.text,
       "password": pass.text,
@@ -105,8 +103,8 @@ class _LoginPageFormState extends State<LoginPageForm> {
       image(d["image"]);
       password(d["password"]);
 
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (BuildContext context) => SplashScreenLogin()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (BuildContext context) => SplashScreenLogin()));
     }
     return null;
   }
@@ -189,7 +187,10 @@ class _LoginPageFormState extends State<LoginPageForm> {
         onPressed: () => login(),
         padding: EdgeInsets.only(top: 12, right: 12, left: 12, bottom: 4),
         color: Colors.red,
-        child: Text('Log In', style: TextStyle(color: Colors.white)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('Log In', style: TextStyle(color: Colors.white)),
+        ),
       ),
     );
 
@@ -199,7 +200,7 @@ class _LoginPageFormState extends State<LoginPageForm> {
         child: Card(
           child: Container(
             width: 500,
-            height: 300,
+            height: 350,
             child: ListView(
               shrinkWrap: true,
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
