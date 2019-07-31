@@ -82,7 +82,7 @@ class StorePageLayout extends State<StorePage> {
     ]);
 
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: <Widget>[
             SizedBox(height: 10.0),
