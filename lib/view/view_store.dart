@@ -29,24 +29,24 @@ class StorePageLayout extends State<StorePage> {
       var datauser = json.decode(response.body);
       debugPrint(datauser[0]["productcategory_id"]);
       List<ItemCard> items = List();
-      
+
       for (var i = 0; i < datauser.length; i++) {
-        datauser[i]['productcategory_id'] == ket ?
-          items.add(
-            new ItemCard(
-              onTap: (Item item) {
-                // debugPrint("${item.productPrice}");
-                onTap(item);
-              },
-              item: new Item(
-                productPicture: datauser[i]['product_picture'],
-                productName: datauser[i]['product_name'],
-                productPrice: datauser[i]['product_price'],
-              ),
-            ),
-          ) :
-          Text("Kosong");
-          // Text("gagal")
+        datauser[i]['productcategory_id'] == ket
+            ? items.add(
+                new ItemCard(
+                  onTap: (Item item) {
+                    // debugPrint("${item.productPrice}");
+                    onTap(item);
+                  },
+                  item: new Item(
+                    productPicture: datauser[i]['product_picture'],
+                    productName: datauser[i]['product_name'],
+                    productPrice: datauser[i]['product_price'],
+                  ),
+                ),
+              )
+            : Text("Kosong");
+        // Text("gagal")
 
       }
 
@@ -88,7 +88,7 @@ class StorePageLayout extends State<StorePage> {
               ),
             ),
             Container(
-                height: 500.0,
+                height: 230.0,
                 child: GridView.count(
                   crossAxisCount: 3,
                   children: itemCard,
@@ -246,9 +246,11 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           ),
           Divider(color: Colors.white),
           Container(
-            height: 300,
-            width: 200,
-            child: Column(
+            height: 94,
+            width: MediaQuery.of(context).size.width,
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              alignment: WrapAlignment.center,
               children: <Widget>[
                 RaisedButton(
                   child: const Text('Cancel'),
@@ -258,6 +260,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                     //  clear();
                   },
                 ),
+                SizedBox(width: 8),
                 RaisedButton(
                   child: const Text('Hold'),
                   color: Colors.yellow[300],
@@ -281,11 +284,18 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
   }
 }
 
-class Receiptcard extends StatelessWidget {
+class Receiptcard extends StatefulWidget {
   final Receipt receipt;
   final Item item;
 
   const Receiptcard({Key key, this.receipt, this.item}) : super(key: key);
+
+  @override
+  _ReceiptcardState createState() => _ReceiptcardState();
+}
+
+class _ReceiptcardState extends State<Receiptcard> {
+  int qty = 1;
   @override
   Widget build(BuildContext context) {
     return Table(
@@ -293,30 +303,35 @@ class Receiptcard extends StatelessWidget {
         TableRow(
           children: [
             Text(
-              receipt.name,
+              widget.receipt.name,
               style: TextStyle(color: Colors.white),
             ),
-            MaterialButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.keyboard_arrow_right,
-                size: 1,
-                color: Colors.white,
-              ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  qty--;
+                });
+              },
+              icon: Icon(Icons.keyboard_arrow_left),
+              color: Colors.white,
+              // iconSize: 10,
             ),
             Text(
-              "1",
+              "$qty",
               style: TextStyle(color: Colors.white),
             ),
-            MaterialButton(
-                onPressed: () {},
-                child: Icon(
-                  Icons.keyboard_arrow_right,
-                  size: 1,
-                  color: Colors.white,
-                )),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  qty++;
+                });
+              },
+              icon: Icon(Icons.keyboard_arrow_right),
+              color: Colors.white,
+              // iconSize: 10,
+            ),
             Text(
-              "${receipt.price}",
+              "${widget.receipt.price}",
               style: TextStyle(color: Colors.white),
             ),
           ],
@@ -435,12 +450,11 @@ class _ItemCardCategoryState extends State<ItemCardCategory> {
           splashColor: Colors.red,
           onPressed: () {
             // this.widget.onTap(widget.item);
-             
 
             setState(() {
               ket = widget.item.productcategoryId;
             });
-            
+
             // ket = widget.item.productcategoryId;
             debugPrint(ket);
           },
