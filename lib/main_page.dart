@@ -30,6 +30,7 @@ class MainPageLayout extends State<MainPage> {
     });
     debugPrint('read : $image');
   }
+
   @override
   void initState() {
     read();
@@ -68,7 +69,6 @@ class MainPageLayout extends State<MainPage> {
   var rightDrawer;
   var flexCountNav;
   var flexCountDrawer;
-  var images = ProfilePageLayout().image;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,6 @@ class MainPageLayout extends State<MainPage> {
                       //PROFILE BUTTON
                       RawMaterialButton(
                         onPressed: () {
-                          print('$images');
                           setState(() {
                             mainPage = ProfilePage();
                             rightDrawer = RightDrawerProfilePage();
@@ -116,8 +115,9 @@ class MainPageLayout extends State<MainPage> {
                             shape: BoxShape.circle,
                             image: new DecorationImage(
                               fit: BoxFit.fill,
-                              image: NetworkImage("http://todolist.madukubah.com/uploads/users_photo/" +
-                          image),
+                              image: NetworkImage(
+                                  "http://todolist.madukubah.com/uploads/users_photo/" +
+                                      image),
                             ),
                           ),
                         ),
