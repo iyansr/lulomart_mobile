@@ -233,8 +233,9 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           Divider(color: Colors.white),
           Container(
             height: 50,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+            width: 200,
+            child: Row(
+              // scrollDirection: Axis.horizontal,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
