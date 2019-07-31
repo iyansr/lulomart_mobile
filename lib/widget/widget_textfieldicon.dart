@@ -6,30 +6,19 @@ import 'package:lulomart_mobile/config/api.dart';
 import 'package:lulomart_mobile/config/note.dart';
 
 class TextFieldIcon extends StatefulWidget {
+  final ValueChanged<Item> onListItemTapCategory;
+  TextFieldIcon({this.onListItemTapCategory});
   @override
-  _TextFieldIconState createState() => _TextFieldIconState();
+  _TextFieldIconState createState() => _TextFieldIconState(onTap: (Item item) {
+        // debugPrint("StorePageitem list : " + item.user);
+        this.onListItemTapCategory(item);
+      });
 }
 
 class _TextFieldIconState extends State<TextFieldIcon> {
+  final ValueChanged<Item> onTap;
+  _TextFieldIconState({this.onTap});
   List<ItemCard> itemCard = List();
-
-  List<Note> _notes = List<Note>();
-  List<Note> _notesForDisplay = List<Note>();
-
-  Future<List<Note>> fetchNotes() async {
-    var url = "http://www.lulomart.com/inventory/index.php/api/product";
-    var response = await http.get(url);
-    
-    var notes = List<Note>();
-    
-    if (response.statusCode == 200) {
-      var notesJson = json.decode(response.body);
-      for (var noteJson in notesJson) {
-        notes.add(Note.fromJson(noteJson));
-      }
-    }
-    return notes;
-  }
 
   getData() async {
     Api api = Api();
@@ -42,12 +31,13 @@ class _TextFieldIconState extends State<TextFieldIcon> {
       for (var i = 0; i < datauser.length; i++) {
         items.add(
           new ItemCard(
-            // onTap: (Item item) {
-            //   // debugPrint("${item.productPrice}");
-            //   onTap(item);
-            // },
+            onTap: (Item item) {
+              // debugPrint("${item.productPrice}");
+              onTap(item);
+            },
             item: new Item(
               productcategoryname: datauser[i]['productcategory_name'],
+              productcategoryId: datauser[i]['productcategory_id'],
             ),
           ),
         );
@@ -62,12 +52,6 @@ class _TextFieldIconState extends State<TextFieldIcon> {
   @override
   void initState() {
     getData();
-    fetchNotes().then((value) {
-      setState(() {
-        _notes.addAll(value);
-        _notesForDisplay = _notes;
-      });
-    });
     super.initState();
   }
 
@@ -101,25 +85,6 @@ class _TextFieldIconState extends State<TextFieldIcon> {
       ),
     );
   }
-  _searchBar() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: 'Search...'
-        ),
-        onChanged: (text) {
-          text = text.toLowerCase();
-          setState(() {
-            _notesForDisplay = _notes.where((note) {
-              var noteTitle = note.title.toLowerCase();
-              return noteTitle.contains(text);
-            }).toList();
-          });
-        },
-      ),
-    );
-  }
 }
 
 class ItemCard extends StatelessWidget {
@@ -131,7 +96,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left:8.0),
+      padding: const EdgeInsets.only(left: 8.0),
       child: Container(
         height: 10,
         padding: EdgeInsets.all(8),
@@ -141,7 +106,9 @@ class ItemCard extends StatelessWidget {
         ),
         child: RawMaterialButton(
           splashColor: Colors.red,
-          onPressed: () {},
+          onPressed: () {
+            this.onTap(item);
+          },
           child: Text(
             item.productcategoryname,
             style: TextStyle(color: Colors.black, fontSize: 18),
@@ -155,8 +122,15 @@ class ItemCard extends StatelessWidget {
 
 class Item {
   final String productcategoryname;
+  final String productcategoryId;
 
   Item({
     this.productcategoryname,
+    this.productcategoryId,
   });
+}
+class ReceiptCategory {
+  final String name;
+
+  ReceiptCategory({this.name});
 }

@@ -71,7 +71,14 @@ class StorePageLayout extends State<StorePage> {
             Padding(
               padding: const EdgeInsets.all(1.0),
               child: Container(
-                child: TextFieldIcon(),
+                child: TextFieldIcon(
+                  // onListItemTapCategory: (Item item) {
+                  //   debugPrint("StorePage : " + item.productcategoryId);
+                  //   onListItemTapCategory.addReceip(new ReceiptCategory(
+                  //     name: item.productcategoryId,
+                  //   ));
+                  // },
+                ),
               ),
             ),
             Container(
@@ -100,7 +107,7 @@ class ItemCard extends StatelessWidget {
     // );
 
     String a = 'https://www.lulomart.com/inventory/upload/product/' +
-                item.productPicture;
+        item.productPicture;
     return Card(
       child: InkWell(
         onTap: () {
@@ -111,9 +118,10 @@ class ItemCard extends StatelessWidget {
             Container(
               height: 100,
               decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage(a),
-                fit: BoxFit.cover,)
-              ),
+                  image: DecorationImage(
+                image: NetworkImage(a),
+                fit: BoxFit.cover,
+              )),
             ),
             Text(item.productName),
             Text("${item.productPrice}"),
