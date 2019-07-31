@@ -116,7 +116,8 @@ class MainPageLayout extends State<MainPage> {
                             shape: BoxShape.circle,
                             image: new DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage("assets/images/users.jpeg"),
+                              image: NetworkImage("http://todolist.madukubah.com/uploads/users_photo/" +
+                          image),
                             ),
                           ),
                         ),

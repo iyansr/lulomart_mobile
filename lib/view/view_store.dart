@@ -29,7 +29,7 @@ class StorePageLayout extends State<StorePage> {
       var datauser = json.decode(response.body);
       // debugPrint(datauser[0]["product_picture"]);
       List<ItemCard> items = List();
-
+      debugPrint(ket);
       for (var i = 0; i < datauser.length; i++) {
         if (datauser[i]['productcategory_id'] == ket) {
           items.add(
@@ -210,7 +210,15 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                             style: TextStyle(color: Colors.white),
                           ),
                           Text(
+                            '',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
                             'Qty',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            '',
                             style: TextStyle(color: Colors.white),
                           ),
                           Text(
@@ -310,22 +318,25 @@ class Receiptcard extends StatelessWidget {
               receipt.name,
               style: TextStyle(color: Colors.white),
             ),
-            Row(
-              children: <Widget>[
-                MaterialButton(
-                  onPressed: () {},
-                  child: Icon(Icons.keyboard_arrow_right, size: 1),
-                ),
-                Text(
-                  "${receipt.qty}",
-                  style: TextStyle(color: Colors.white),
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  child: Icon(Icons.keyboard_arrow_right, size: 1),
-                ),
-              ],
+            MaterialButton(
+              onPressed: () {},
+              child: Icon(
+                Icons.keyboard_arrow_right,
+                size: 1,
+                color: Colors.white,
+              ),
             ),
+            Text(
+              "1",
+              style: TextStyle(color: Colors.white),
+            ),
+            MaterialButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.keyboard_arrow_right,
+                  size: 1,
+                  color: Colors.white,
+                )),
             Text(
               "${receipt.price}",
               style: TextStyle(color: Colors.white),
@@ -445,10 +456,9 @@ class _ItemCardCategoryState extends State<ItemCardCategory> {
         child: RawMaterialButton(
           splashColor: Colors.red,
           onPressed: () {
-            // this.widget.onTap(widget.item);
-          
+            ket = '${widget.item.productcategoryId}';
             setState(() {
-              ket = widget.item.productcategoryId;
+              ket = '${widget.item.productcategoryId}';
             });
           },
           child: Text(
