@@ -250,13 +250,13 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           ),
           Divider(color: Colors.white),
           Container(
-            height: 50,
+            height: 300,
             width: 200,
-            child: Row(
-              // scrollDirection: Axis.horizontal,
+            child: ListView(
+              scrollDirection: Axis.vertical,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                Container(
+                  width: 200,
                   child: RaisedButton(
                     child: const Text('Cancel'),
                     color: Colors.red[300],
@@ -266,11 +266,22 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                Container(
+                  width: 200,
                   child: RaisedButton(
                     child: const Text('Hold'),
                     color: Colors.yellow[300],
+                    elevation: 4.0,
+                    onPressed: () {
+                      //  clear();
+                    },
+                  ),
+                ),
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    child: const Text('Payment'),
+                    color: Colors.green[300],
                     elevation: 4.0,
                     onPressed: () {},
                   ),
@@ -278,16 +289,6 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
               ],
             ),
           ),
-          Container(
-            height: 50,
-            width: 200,
-            child: RaisedButton(
-              child: const Text('Payment'),
-              color: Colors.green[300],
-              elevation: 4.0,
-              onPressed: () {},
-            ),
-          )
         ],
       ),
     );
@@ -309,9 +310,21 @@ class Receiptcard extends StatelessWidget {
               receipt.name,
               style: TextStyle(color: Colors.white),
             ),
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
+            Row(
+              children: <Widget>[
+                MaterialButton(
+                  onPressed: () {},
+                  child: Icon(Icons.keyboard_arrow_right, size: 1),
+                ),
+                Text(
+                  "${receipt.qty}",
+                  style: TextStyle(color: Colors.white),
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  child: Icon(Icons.keyboard_arrow_right, size: 1),
+                ),
+              ],
             ),
             Text(
               "${receipt.price}",
