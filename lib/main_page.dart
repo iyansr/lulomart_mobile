@@ -94,9 +94,12 @@ class MainPageLayout extends State<MainPage> {
                             flexCountDrawer = 25;
                           });
                         },
-                        child: Image.network(
+                        child: CircleAvatar(
+                          radius: 20,
+                          child: Image.network(
                             "http://todolist.madukubah.com/uploads/users_photo/" +
                                 image),
+                        ),
                         shape: CircleBorder(),
                         elevation: 2.0,
                         fillColor: profileSelColor,

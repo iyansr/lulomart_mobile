@@ -174,11 +174,11 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
   // }
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black107,
+      color: Colors.black,
       child: Column(
         children: <Widget>[
           Container(
-            color: Colors.black310,
+            color: Colors.black,
             height: 250,
             width: MediaQuery.of(context).size.width,
             child: Padding(
@@ -235,8 +235,8 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           Divider(color: Colors.white),
           Container(
             height: 50,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+            child: Row(
+              // scrollDirection: Axis.horizontal,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
