@@ -100,7 +100,7 @@ class ItemCard extends StatelessWidget {
     // );
 
     String a = 'https://www.lulomart.com/inventory/upload/product/' +
-                item.productPicture;
+        item.productPicture;
     return Card(
       child: InkWell(
         onTap: () {
@@ -111,9 +111,10 @@ class ItemCard extends StatelessWidget {
             Container(
               height: 100,
               decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage(a),
-                fit: BoxFit.cover,)
-              ),
+                  image: DecorationImage(
+                image: NetworkImage(a),
+                fit: BoxFit.cover,
+              )),
             ),
             Text(item.productName),
             Text("${item.productPrice}"),
@@ -173,15 +174,15 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
   // }
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
+      color: Colors.black107,
       child: Column(
         children: <Widget>[
           Container(
-            color: Colors.black38,
+            color: Colors.black310,
             height: 250,
             width: MediaQuery.of(context).size.width,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: ListView(
                 children: <Widget>[
                   Table(
@@ -232,32 +233,44 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
             ),
           ),
           Divider(color: Colors.white),
-          SingleChildScrollView(
-            child: Column(
+          Container(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: <Widget>[
-                RaisedButton(
-                  child: const Text('Cancel'),
-                  color: Colors.red[300],
-                  elevation: 4.0,
-                  onPressed: () {
-                    //  clear();
-                  },
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                  child: RaisedButton(
+                    child: const Text('Cancel'),
+                    color: Colors.red[300],
+                    elevation: 4.0,
+                    onPressed: () {
+                      //  clear();
+                    },
+                  ),
                 ),
-                RaisedButton(
-                  child: const Text('Hold'),
-                  color: Colors.yellow[300],
-                  elevation: 4.0,
-                  onPressed: () {},
-                ),
-                RaisedButton(
-                  child: const Text('Payment'),
-                  color: Colors.green[300],
-                  elevation: 4.0,
-                  onPressed: () {},
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                  child: RaisedButton(
+                    child: const Text('Hold'),
+                    color: Colors.yellow[300],
+                    elevation: 4.0,
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),
           ),
+          Container(
+            height: 50,
+            width: 200,
+            child: RaisedButton(
+              child: const Text('Payment'),
+              color: Colors.green[300],
+              elevation: 4.0,
+              onPressed: () {},
+            ),
+          )
         ],
       ),
     );
