@@ -69,12 +69,12 @@ class StorePageLayout extends State<StorePage> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: Container(
-                child: TextFieldIcon(),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(1.0),
+            //   child: Container(
+            //     child: TextFieldIcon(),
+            //   ),
+            // ),
             Container(
                 height: 500.0,
                 child: GridView.count(
