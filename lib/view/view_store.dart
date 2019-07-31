@@ -251,34 +251,39 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           Divider(color: Colors.white),
           Container(
             height: 300,
-            width: 200,
+            width: 100,
             child: ListView(
               scrollDirection: Axis.vertical,
               children: <Widget>[
-                Container(
-                  width: 200,
-                  child: RaisedButton(
-                    child: const Text('Cancel'),
-                    color: Colors.red[300],
-                    elevation: 4.0,
-                    onPressed: () {
-                      //  clear();
-                    },
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: 100,
+                      child: RaisedButton(
+                        child: const Text('Cancel'),
+                        color: Colors.red[300],
+                        elevation: 4.0,
+                        onPressed: () {
+                          //  clear();
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: 100,
+                      child: RaisedButton(
+                        child: const Text('Hold'),
+                        color: Colors.yellow[300],
+                        elevation: 4.0,
+                        onPressed: () {
+                          //  clear();
+                        },
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
-                  width: 200,
-                  child: RaisedButton(
-                    child: const Text('Hold'),
-                    color: Colors.yellow[300],
-                    elevation: 4.0,
-                    onPressed: () {
-                      //  clear();
-                    },
-                  ),
-                ),
-                Container(
-                  width: 200,
+                  width: 100,
                   child: RaisedButton(
                     child: const Text('Payment'),
                     color: Colors.green[300],
@@ -446,7 +451,7 @@ class _ItemCardCategoryState extends State<ItemCardCategory> {
           splashColor: Colors.red,
           onPressed: () {
             // this.widget.onTap(widget.item);
-          
+
             setState(() {
               ket = widget.item.productcategoryId;
             });
