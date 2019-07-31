@@ -232,42 +232,45 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           ),
           Divider(color: Colors.white),
           Container(
-            height: 50,
+            height: 300,
             width: 200,
-            child: Row(
+            child: ListView(
+              scrollDirection: Axis.vertical,
               children: <Widget>[
-                RaisedButton(
-                  child: const Text('Cancel'),
-                  color: Colors.red[300],
-                  elevation: 4.0,
-                  onPressed: () {
-                    //  clear();
-                  },
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    child: const Text('Cancel'),
+                    color: Colors.red[300],
+                    elevation: 4.0,
+                    onPressed: () {
+                      //  clear();
+                    },
+                  ),
                 ),
-                SizedBox(
-                  width: 20,
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    child: const Text('Hold'),
+                    color: Colors.yellow[300],
+                    elevation: 4.0,
+                    onPressed: () {
+                      //  clear();
+                    },
+                  ),
                 ),
-                RaisedButton(
-                  child: const Text('Hold'),
-                  color: Colors.yellow[300],
-                  elevation: 4.0,
-                  onPressed: () {
-                    //  clear();
-                  },
+                Container(
+                  width: 200,
+                  child: RaisedButton(
+                    child: const Text('Payment'),
+                    color: Colors.green[300],
+                    elevation: 4.0,
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),
           ),
-          Container(
-            height: 50,
-            width: 200,
-            child: RaisedButton(
-              child: const Text('Payment'),
-              color: Colors.green[300],
-              elevation: 4.0,
-              onPressed: () {},
-            ),
-          )
         ],
       ),
     );

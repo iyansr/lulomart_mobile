@@ -96,15 +96,21 @@ class MainPageLayout extends State<MainPage> {
                             flexCountDrawer = 25;
                           });
                         },
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "http://todolist.madukubah.com/uploads/users_photo/" +
-                                  images),
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: new BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage("assets/images/users.jpeg"),
+                            ),
+                          ),
                         ),
                         shape: CircleBorder(),
                         elevation: 2.0,
                         fillColor: profileSelColor,
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(1.0),
                       ),
 
                       //STORE BUTTON
