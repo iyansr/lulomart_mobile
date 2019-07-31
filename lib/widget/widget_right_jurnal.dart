@@ -14,13 +14,13 @@ class _RightDrawerJurnalState extends State<RightDrawerJurnal> {
     return ListView(
       children: <Widget>[
         Container(
-          height: 500,
+          height: 300,
           child: Column(
             children: <Widget>[
               Column(
                 children: <Widget>[
                   Container(
-                    height: 500,
+                    height: 295,
                     color: Colors.black,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -43,6 +43,19 @@ class _RightDrawerJurnalState extends State<RightDrawerJurnal> {
                 ],
               ),
             ],
+          ),
+        ),
+        Container(
+          height: 100,
+          color: Colors.black87,
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: RaisedButton(
+              child: const Text('Print'),
+              color: Colors.white,
+              elevation: 4.0,
+              onPressed: () {},
+            ),
           ),
         ),
       ],
