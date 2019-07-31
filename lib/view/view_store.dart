@@ -258,6 +258,9 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                   elevation: 4.0,
                   onPressed: () {
                     //  clear();
+                    setState(() {
+                      receiptTable.clear();
+                    });
                   },
                 ),
                 SizedBox(width: 8),
