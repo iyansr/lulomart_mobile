@@ -94,12 +94,27 @@ class MainPageLayout extends State<MainPage> {
                             flexCountDrawer = 25;
                           });
                         },
-                        child: CircleAvatar(
-                          radius: 20,
-                          child: Image.network(
+                        child: Container(
+                          height: 150.0,
+                          width: 150.0,
+                          decoration: new BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: new Border.all(
+                                color: Color(0xffed5565), width: 5),
+                            image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(
                             "http://todolist.madukubah.com/uploads/users_photo/" +
                                 image),
+                            ),
+                          ),
                         ),
+                        // child: CircleAvatar(
+                        //   radius: 20,
+                        //   child: Image.network(
+                        //     "http://todolist.madukubah.com/uploads/users_photo/" +
+                        //         image),
+                        // ),
                         shape: CircleBorder(),
                         elevation: 2.0,
                         fillColor: profileSelColor,

@@ -72,13 +72,13 @@ class StorePageLayout extends State<StorePage> {
               padding: const EdgeInsets.all(1.0),
               child: Container(
                 child: TextFieldIcon(
-                  // onListItemTapCategory: (ItemCategory item) {
-                  //   debugPrint("StorePage : " + item.productcategoryId);
-                  //   onListItemTapCategory.addReceip(new ReceiptCategory(
-                  //     name: item.productcategoryId,
-                  //   ));
-                  // },
-                ),
+                    // onListItemTapCategory: (ItemCategory item) {
+                    //   debugPrint("StorePage : " + item.productcategoryId);
+                    //   onListItemTapCategory.addReceip(new ReceiptCategory(
+                    //     name: item.productcategoryId,
+                    //   ));
+                    // },
+                    ),
               ),
             ),
             Container(
@@ -169,7 +169,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       this.receiptTable.add(new Receiptcard(receipt: _receipt));
     });
   }
-  
+
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
@@ -235,27 +235,22 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
             height: 50,
             width: 200,
             child: Row(
-              // scrollDirection: Axis.horizontal,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-                  child: RaisedButton(
-                    child: const Text('Cancel'),
-                    color: Colors.red[300],
-                    elevation: 4.0,
-                    onPressed: () {
-                      //  clear();
-                    },
-                  ),
+                RaisedButton(
+                  child: const Text('Cancel'),
+                  color: Colors.red[300],
+                  elevation: 4.0,
+                  onPressed: () {
+                    //  clear();
+                  },
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-                  child: RaisedButton(
-                    child: const Text('Hold'),
-                    color: Colors.yellow[300],
-                    elevation: 4.0,
-                    onPressed: () {},
-                  ),
+                RaisedButton(
+                  child: const Text('Hold'),
+                  color: Colors.yellow[300],
+                  elevation: 4.0,
+                  onPressed: () {
+                    //  clear();
+                  },
                 ),
               ],
             ),
@@ -306,14 +301,12 @@ class Receiptcard extends StatelessWidget {
   }
 }
 
-
-
-
 class TextFieldIcon extends StatefulWidget {
   final ValueChanged<ItemCategory> onListItemTapCategory;
   TextFieldIcon({this.onListItemTapCategory});
   @override
-  _TextFieldIconState createState() => _TextFieldIconState(onTap: (ItemCategory item) {
+  _TextFieldIconState createState() =>
+      _TextFieldIconState(onTap: (ItemCategory item) {
         // debugPrint("StorePageitem list : " + item.user);
         this.onListItemTapCategory(item);
       });
@@ -433,9 +426,9 @@ class ItemCategory {
     this.productcategoryId,
   });
 }
+
 class ReceiptCategory {
   final String name;
 
   ReceiptCategory({this.name});
 }
-
