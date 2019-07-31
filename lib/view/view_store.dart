@@ -72,7 +72,7 @@ class StorePageLayout extends State<StorePage> {
               padding: const EdgeInsets.all(1.0),
               child: Container(
                 child: TextFieldIcon(
-                  // onListItemTapCategory: (Item item) {
+                  // onListItemTapCategory: (ItemCategory item) {
                   //   debugPrint("StorePage : " + item.productcategoryId);
                   //   onListItemTapCategory.addReceip(new ReceiptCategory(
                   //     name: item.productcategoryId,
@@ -102,10 +102,6 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Center(
-    //   child: new CircularProgressIndicator(),
-    // );
-
     String a = 'https://www.lulomart.com/inventory/upload/product/' +
         item.productPicture;
     return Card(
@@ -173,19 +169,14 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       this.receiptTable.add(new Receiptcard(receipt: _receipt));
     });
   }
-  // void clear(){
-  //   setState(() {
-  //    Text("data");
-
-  //   });
-  // }
+  
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black107,
+      color: Colors.black,
       child: Column(
         children: <Widget>[
           Container(
-            color: Colors.black310,
+            color: Colors.black,
             height: 250,
             width: MediaQuery.of(context).size.width,
             child: Padding(
