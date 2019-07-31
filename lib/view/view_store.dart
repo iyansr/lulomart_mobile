@@ -242,6 +242,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
           Divider(color: Colors.white),
           Container(
             height: 50,
+            width: 200,
             child: Row(
               // scrollDirection: Axis.horizontal,
               children: <Widget>[
