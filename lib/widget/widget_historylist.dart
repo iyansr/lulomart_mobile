@@ -84,11 +84,21 @@ class _HistoryListState extends State<HistoryList> {
   }
 }
 
-class ItemCard extends StatelessWidget {
+class ItemCard extends StatefulWidget {
   final ValueChanged<ItemHistory> onTap;
   final ItemHistory item;
 
   const ItemCard({Key key, this.onTap, this.item}) : super(key: key);
+
+  @override
+  _ItemCardState createState() => _ItemCardState();
+}
+
+class _ItemCardState extends State<ItemCard> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,14 +116,14 @@ class ItemCard extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         Text(
-                          (item.transaksiId),
+                          (widget.item.transaksiId),
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 5,
                         ),
-                        Text(item.transaksiTotalprice),
-                        Text(item.transaksiDate),
+                        Text(widget.item.transaksiTotalprice),
+                        Text(widget.item.transaksiDate),
                       ],
                     )
                   ],
@@ -127,7 +137,7 @@ class ItemCard extends StatelessWidget {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        Text(item.transaksiTotalprice),
+                        Text(widget.item.transaksiTotalprice),
                         RaisedButton(
                           child: const Text(
                             'Details',
@@ -136,7 +146,7 @@ class ItemCard extends StatelessWidget {
                           color: Colors.red,
                           elevation: 4.0,
                           onPressed: () {
-                            this.onTap(item);
+                            setState(() {});
                           },
                         ),
                       ],
@@ -173,11 +183,6 @@ class ReceiptHistory {
 }
 
 class RightDrawerHistoryPage extends StatefulWidget {
-  // final String id;
-  addReceip(ReceiptHistory receipt) {
-    rightDrawerStoreHistoryPage.addReceip(receipt);
-  }
-
   var rightDrawerStoreHistoryPage = _RightDrawerHistoryPageState();
 
   @override
@@ -185,122 +190,55 @@ class RightDrawerHistoryPage extends StatefulWidget {
 }
 
 class _RightDrawerHistoryPageState extends State<RightDrawerHistoryPage> {
-  List<Receiptcard> receiptTable = List();
-
-  void addReceip(ReceiptHistory _receipt) {
-    setState(() {
-      // debugPrint("Receipt : " + receipt.name);
-      this.receiptTable.add(new Receiptcard(receipt: _receipt));
-    });
-  }
-
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.black87,
-        child: Column(children: <Widget>[
+      color: Colors.black87,
+      child: Column(
+        children: <Widget>[
           Container(
             color: Colors.black38,
             height: 250,
             width: MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ListView(
-                children: <Widget>[
-                  Table(
-                    children: [
-                      TableRow(
-                        children: [
-                          Text(
-                            'Product',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            'Qty',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            'Per-item',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            'Price',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Divider(
-                      color: Colors.white,
-                    ),
-                  ),
-                  Column(
-                    children: receiptTable,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Divider(
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text("Total Trx : Rp.680.000",
-                      style: TextStyle(color: Colors.white)),
-                ],
-              ),
+              child: Text('as'), //item,
             ),
           ),
           Divider(color: Colors.white),
           Container(
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                children: <Widget>[
-                  RaisedButton(
-                    child: const Text('Print'),
-                    color: Colors.white,
-                    elevation: 4.0,
-                    onPressed: () {},
-                  ),
-                ],
+              child: RaisedButton(
+                child: const Text('Print'),
+                color: Colors.white,
+                elevation: 4.0,
+                onPressed: () {},
               ),
             ),
           )
-        ]));
+        ],
+      ),
+    );
   }
 }
 
-class Receiptcard extends StatelessWidget {
-  final ReceiptHistory receipt;
-  final ItemHistory item;
+class HisoryDetails extends StatelessWidget {
+  String trxId;
+  String trxDate;
+  String trxTotal;
+  String trxPayment;
+  String trxStatus;
 
-  const Receiptcard({Key key, this.receipt, this.item}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Table(
-      children: [
-        TableRow(
-          children: [
-            Text(
-              receipt.name,
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "${receipt.price}",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ],
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          Text(this.trxDate),
+          Text(this.trxStatus),
+          Text(this.trxPayment),
+        ],
+      ),
     );
   }
 }
