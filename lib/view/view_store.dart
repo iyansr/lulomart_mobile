@@ -244,6 +244,9 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
                     //  clear();
                   },
                 ),
+                SizedBox(
+                  width: 20,
+                ),
                 RaisedButton(
                   child: const Text('Hold'),
                   color: Colors.yellow[300],
@@ -286,9 +289,21 @@ class Receiptcard extends StatelessWidget {
               receipt.name,
               style: TextStyle(color: Colors.white),
             ),
-            Text(
-              "${receipt.qty}",
-              style: TextStyle(color: Colors.white),
+            Row(
+              children: <Widget>[
+                MaterialButton(
+                  onPressed: () {},
+                  child: Icon(Icons.keyboard_arrow_right, size: 1),
+                ),
+                Text(
+                  "${receipt.qty}",
+                  style: TextStyle(color: Colors.white),
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  child: Icon(Icons.keyboard_arrow_right, size: 1),
+                ),
+              ],
             ),
             Text(
               "${receipt.price}",

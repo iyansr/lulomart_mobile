@@ -5,7 +5,7 @@ import 'package:lulomart_mobile/view/view_login.dart';
 import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_splash_logout.dart';
 import 'package:lulomart_mobile/view/view_store.dart';
-import 'package:lulomart_mobile/view/view_profile.dart';
+// import 'package:lulomart_mobile/view/view_profile.dart';
 import 'package:lulomart_mobile/view/view_about.dart';
 import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
@@ -55,6 +55,7 @@ class MainPageLayout extends State<MainPage> {
   var rightDrawer;
   var flexCountNav;
   var flexCountDrawer;
+  var images = ProfilePageLayout().image;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +83,7 @@ class MainPageLayout extends State<MainPage> {
                       //PROFILE BUTTON
                       RawMaterialButton(
                         onPressed: () {
+                          print('$images');
                           setState(() {
                             mainPage = ProfilePage();
                             rightDrawer = RightDrawerProfilePage();
@@ -94,27 +96,11 @@ class MainPageLayout extends State<MainPage> {
                             flexCountDrawer = 25;
                           });
                         },
-                        child: Container(
-                          height: 150.0,
-                          width: 150.0,
-                          decoration: new BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: new Border.all(
-                                color: Color(0xffed5565), width: 5),
-                            image: new DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                            "http://todolist.madukubah.com/uploads/users_photo/" +
-                                image),
-                            ),
-                          ),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "http://todolist.madukubah.com/uploads/users_photo/" +
+                                  images),
                         ),
-                        // child: CircleAvatar(
-                        //   radius: 20,
-                        //   child: Image.network(
-                        //     "http://todolist.madukubah.com/uploads/users_photo/" +
-                        //         image),
-                        // ),
                         shape: CircleBorder(),
                         elevation: 2.0,
                         fillColor: profileSelColor,

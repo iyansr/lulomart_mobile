@@ -35,6 +35,7 @@ class ProfilePageLayout extends State<ProfilePage> {
   void initState() {
     read();
     super.initState();
+    debugPrint(' image: $image');
   }
 
   @override
@@ -74,7 +75,9 @@ class ProfilePageLayout extends State<ProfilePage> {
             child: const Text('Change Role'),
             color: Colors.white,
             elevation: 4.0,
-            onPressed: () {},
+            onPressed: () {
+              print('$image');
+            },
           ),
         ],
       ),
