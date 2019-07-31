@@ -5,6 +5,9 @@ import 'package:http/http.dart' as http;
 import 'package:lulomart_mobile/config/api.dart';
 import 'package:lulomart_mobile/widget/widget_textfieldicon.dart';
 
+
+var ket = "";
+
 class StorePage extends StatefulWidget {
   final ValueChanged<Item> onListItemTap;
   StorePage({this.onListItemTap});
@@ -29,6 +32,7 @@ class StorePageLayout extends State<StorePage> {
       List<ItemCard> items = List();
 
       for (var i = 0; i < datauser.length; i++) {
+        datauser[i]['productcategory_id'] == 'pdctg20181113123027471310' ?
         items.add(
           new ItemCard(
             onTap: (Item item) {
@@ -41,7 +45,7 @@ class StorePageLayout extends State<StorePage> {
               productPrice: datauser[i]['product_price'],
             ),
           ),
-        );
+        ) : Text("Gagal");
       }
 
       setState(() {
@@ -391,12 +395,17 @@ class _TextFieldIconState extends State<TextFieldIcon> {
   }
 }
 
-class ItemCardCategory extends StatelessWidget {
+class ItemCardCategory extends StatefulWidget {
   final ValueChanged<ItemCategory> onTap;
   final ItemCategory item;
 
   const ItemCardCategory({Key key, this.onTap, this.item}) : super(key: key);
 
+  @override
+  _ItemCardCategoryState createState() => _ItemCardCategoryState();
+}
+
+class _ItemCardCategoryState extends State<ItemCardCategory> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -411,10 +420,14 @@ class ItemCardCategory extends StatelessWidget {
         child: RawMaterialButton(
           splashColor: Colors.red,
           onPressed: () {
-            this.onTap(item);
+            this.widget.onTap(widget.item);
+            setState(() {
+             kat =  widget.item.productcategoryId;
+            });
+          
           },
           child: Text(
-            item.productcategoryname,
+            widget.item.productcategoryname,
             style: TextStyle(color: Colors.black, fontSize: 18),
             textAlign: TextAlign.center,
           ),
