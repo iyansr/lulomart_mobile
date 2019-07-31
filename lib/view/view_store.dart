@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 import 'package:lulomart_mobile/config/api.dart';
 import 'package:lulomart_mobile/widget/widget_textfieldicon.dart';
 
-
 var ket = "";
 
 class StorePage extends StatefulWidget {
@@ -32,20 +31,35 @@ class StorePageLayout extends State<StorePage> {
       List<ItemCard> items = List();
 
       for (var i = 0; i < datauser.length; i++) {
-        datauser[i]['productcategory_id'] == 'pdctg20181113123027471310' ?
-        items.add(
-          new ItemCard(
-            onTap: (Item item) {
-              // debugPrint("${item.productPrice}");
-              onTap(item);
-            },
-            item: new Item(
-              productPicture: datauser[i]['product_picture'],
-              productName: datauser[i]['product_name'],
-              productPrice: datauser[i]['product_price'],
+        if (datauser[i]['productcategory_id'] == ket) {
+          items.add(
+            new ItemCard(
+              onTap: (Item item) {
+                // debugPrint("${item.productPrice}");
+                onTap(item);
+              },
+              item: new Item(
+                productPicture: datauser[i]['product_picture'],
+                productName: datauser[i]['product_name'],
+                productPrice: datauser[i]['product_price'],
+              ),
             ),
-          ),
-        ) : Text("Gagal");
+          );
+        } else {
+          items.add(
+            new ItemCard(
+              onTap: (Item item) {
+                // debugPrint("${item.productPrice}");
+                onTap(item);
+              },
+              item: new Item(
+                productPicture: datauser[i]['product_picture'],
+                productName: datauser[i]['product_name'],
+                productPrice: datauser[i]['product_price'],
+              ),
+            ),
+          );
+        }
       }
 
       setState(() {
@@ -76,13 +90,13 @@ class StorePageLayout extends State<StorePage> {
               padding: const EdgeInsets.all(1.0),
               child: Container(
                 child: TextFieldIcon(
-                  // onListItemTapCategory: (ItemCategory item) {
-                  //   debugPrint("StorePage : " + item.productcategoryId);
-                  //   onListItemTapCategory.addReceip(new ReceiptCategory(
-                  //     name: item.productcategoryId,
-                  //   ));
-                  // },
-                ),
+                    // onListItemTapCategory: (ItemCategory item) {
+                    //   debugPrint("StorePage : " + item.productcategoryId);
+                    //   onListItemTapCategory.addReceip(new ReceiptCategory(
+                    //     name: item.productcategoryId,
+                    //   ));
+                    // },
+                    ),
               ),
             ),
             Container(
@@ -173,7 +187,7 @@ class _RightDrawerStorePageState extends State<RightDrawerStorePage> {
       this.receiptTable.add(new Receiptcard(receipt: _receipt));
     });
   }
-  
+
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
@@ -310,14 +324,12 @@ class Receiptcard extends StatelessWidget {
   }
 }
 
-
-
-
 class TextFieldIcon extends StatefulWidget {
   final ValueChanged<ItemCategory> onListItemTapCategory;
   TextFieldIcon({this.onListItemTapCategory});
   @override
-  _TextFieldIconState createState() => _TextFieldIconState(onTap: (ItemCategory item) {
+  _TextFieldIconState createState() =>
+      _TextFieldIconState(onTap: (ItemCategory item) {
         // debugPrint("StorePageitem list : " + item.user);
         this.onListItemTapCategory(item);
       });
@@ -420,11 +432,11 @@ class _ItemCardCategoryState extends State<ItemCardCategory> {
         child: RawMaterialButton(
           splashColor: Colors.red,
           onPressed: () {
-            this.widget.onTap(widget.item);
-            setState(() {
-             kat =  widget.item.productcategoryId;
-            });
+            // this.widget.onTap(widget.item);
           
+            setState(() {
+              ket = widget.item.productcategoryId;
+            });
           },
           child: Text(
             widget.item.productcategoryname,
@@ -446,9 +458,9 @@ class ItemCategory {
     this.productcategoryId,
   });
 }
+
 class ReceiptCategory {
   final String name;
 
   ReceiptCategory({this.name});
 }
-

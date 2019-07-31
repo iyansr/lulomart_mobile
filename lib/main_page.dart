@@ -11,6 +11,7 @@ import 'package:lulomart_mobile/widget/widget_aboutpage.dart';
 import 'package:lulomart_mobile/widget/widget_historylist.dart';
 import 'package:lulomart_mobile/widget/widget_right_jurnal.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -18,8 +19,20 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageLayout extends State<MainPage> {
+  String image = "";
+  read() async {
+    final prefs = await SharedPreferences.getInstance();
+    var key = 'image';
+    final image = prefs.get(key) ?? "jgfjhg";
+
+    setState(() {
+      this.image = image;
+    });
+    debugPrint('read : $image');
+  }
   @override
   void initState() {
+    read();
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
     SystemChrome.setPreferredOrientations([
