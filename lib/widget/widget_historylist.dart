@@ -100,6 +100,8 @@ class _ItemCardState extends State<ItemCard> {
     super.initState();
   }
 
+  Set<HisoryDetails> histry = Set<HisoryDetails>();
+
   @override
   Widget build(BuildContext context) {
     return new Card(
@@ -146,7 +148,9 @@ class _ItemCardState extends State<ItemCard> {
                           color: Colors.red,
                           elevation: 4.0,
                           onPressed: () {
-                            setState(() {});
+                            setState(() {
+                              //
+                            });
                           },
                         ),
                       ],

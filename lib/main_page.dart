@@ -13,6 +13,8 @@ import 'package:lulomart_mobile/widget/widget_right_jurnal.dart';
 import 'package:lulomart_mobile/widget/widget_profilepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'view/view_history.dart';
+
 class MainPage extends StatefulWidget {
   @override
   MainPageLayout createState() => MainPageLayout();
@@ -53,6 +55,7 @@ class MainPageLayout extends State<MainPage> {
     rightDrawer = RightDrawerStorePage();
     flexCountNav = 3;
     flexCountDrawer = 9;
+    mainFlex = 15;
     profileSelColor = Color(0xfff96f5d);
     storeSelColor = Colors.white;
     hisSelColor = Color(0xfff96f5d);
@@ -69,6 +72,7 @@ class MainPageLayout extends State<MainPage> {
   var rightDrawer;
   var flexCountNav;
   var flexCountDrawer;
+  var mainFlex;
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +110,7 @@ class MainPageLayout extends State<MainPage> {
                             abtSelColor = Color(0xfff96f5d);
                             flexCountNav = 5;
                             flexCountDrawer = 25;
+                            mainFlex = 15;
                           });
                         },
                         child: Container(
@@ -152,6 +157,7 @@ class MainPageLayout extends State<MainPage> {
                             abtSelColor = Color(0xfff96f5d);
                             flexCountNav = 3;
                             flexCountDrawer = 9;
+                            mainFlex = 15;
                           });
                         },
                         child: Icon(
@@ -168,24 +174,26 @@ class MainPageLayout extends State<MainPage> {
                       RawMaterialButton(
                         onPressed: () {
                           setState(() {
-                            mainPage = HistoryList(
-                              onListItemTapHistory: (ItemHistory item) {
-                                debugPrint("StorePage : " + item.transaksiDate);
-                                rightDrawer.addReceip(new ReceiptHistory(
-                                  name: item.transaksiTotalprice,
-                                  qty: item.transaksiTotalprice,
-                                  price: item.transaksiTotalprice,
-                                ));
-                              },
-                            );
-                            rightDrawer = RightDrawerHistoryPage();
+                            mainPage = HistoryPage();
+                            // HistoryList(
+                            //   onListItemTapHistory: (ItemHistory item) {
+                            //     debugPrint("StorePage : " + item.transaksiDate);
+                            //     rightDrawer.addReceip(new ReceiptHistory(
+                            //       name: item.transaksiTotalprice,
+                            //       qty: item.transaksiTotalprice,
+                            //       price: item.transaksiTotalprice,
+                            //     ));
+                            //   },
+                            // );
+                            rightDrawer = RightHistory();
                             profileSelColor = Color(0xfff96f5d);
                             storeSelColor = Color(0xfff96f5d);
                             hisSelColor = Colors.white;
                             jurSelColor = Color(0xfff96f5d);
                             abtSelColor = Color(0xfff96f5d);
                             flexCountNav = 3;
-                            flexCountDrawer = 9;
+                            flexCountDrawer = 0;
+                            mainFlex = 15 + 9;
                           });
                         },
                         child: Icon(
@@ -211,6 +219,7 @@ class MainPageLayout extends State<MainPage> {
                             abtSelColor = Color(0xfff96f5d);
                             flexCountNav = 3;
                             flexCountDrawer = 9;
+                            mainFlex = 15;
                           });
                         },
                         child: Icon(
@@ -236,6 +245,7 @@ class MainPageLayout extends State<MainPage> {
                             abtSelColor = Colors.white;
                             flexCountNav = 3;
                             flexCountDrawer = 9;
+                            mainFlex = 15;
                           });
                         },
                         child: Icon(
@@ -296,7 +306,7 @@ class MainPageLayout extends State<MainPage> {
               ),
             ),
             Expanded(
-              flex: 15,
+              flex: mainFlex,
               child: mainPage,
             ),
             Expanded(
